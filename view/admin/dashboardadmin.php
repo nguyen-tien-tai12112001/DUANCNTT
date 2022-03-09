@@ -411,9 +411,10 @@
        const data = {
          labels: labels,
          datasets: [{
-           label: 'Điểm trung bình',
-           backgroundColor: 'rgb(255, 99, 132)',
-           borderColor: 'rgb(255, 99, 132)',
+           label: 'Số lượng',
+           backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+             hoverBorderColor: "rgba(234, 236, 244, 1)",
            data: [<?= $diemtrungbinh[0]['hocsinhgioi'] ?>,
         <?= $diemtrungbinh[0]['hocsinhkha'] ?>,
         <?= $diemtrungbinh[0]['hocsinhtb'] ?>],
