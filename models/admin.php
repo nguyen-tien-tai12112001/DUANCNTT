@@ -87,14 +87,14 @@
             }
             return $data;
         }
-        public function diemtrungbinh(){
-            $sql = "sELECT count(svdm.masinhvien) as hocsinhgioi,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<8 and svdm.diemtongket>6.5) as hocsinhkha,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` 
-            svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<6.5) 
-            as hocsinhtb FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket>8";
-            $data = $this->executeResult($sql);    
-            return $data;
+        // public function diemtrungbinh(){
+        //     $sql = "sELECT count(svdm.masinhvien) as hocsinhgioi,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<8 and svdm.diemtongket>6.5) as hocsinhkha,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` 
+        //     svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<6.5) 
+        //     as hocsinhtb FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket>8";
+        //     $data = $this->executeResult($sql);    
+        //     return $data;
             
-        }
+        // }
         // / Sinh vien
         public function getinfosinhvien($msv){
             $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";
@@ -137,15 +137,10 @@
             return $data;
         }
 
-        public function tongtin($msv){
-            $sql = "select SUM(sotinchi) as tongtin from `sinhvien-diemmon` inner join `monhoc` on `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv' and `sinhvien-diemmon`.diemcuoiky!=''";
-            $this->execute($sql);
-            if($this->dem()!=0){
-                $data = mysqli_fetch_array($this->result);
-            }
-            else{
-                $data = [];
-            }
+        public function diemtrungbinh($msv){
+            $sql = "select sum(sotinchi*diemtongket)/SUM(sotinchi) as diemtb from `sinhvien-diemmon` inner join `monhoc` on 
+            `sinhvien-diemmon`.mamon=`monhoc`.mamon WHERE masinhvien='$msv' and `sinhvien-diemmon`.diemcuoiky!=''";
+            $data = $this->executeResult($sql);
             return $data;
         }
         
@@ -314,6 +309,7 @@
             
             return $this->execute($sql);
         }
+        
         public function deletegiangvien($id){
             $sql="DELETE FROM giangvien WHere id = '$id'";
             
