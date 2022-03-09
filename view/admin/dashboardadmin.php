@@ -337,8 +337,7 @@
              caretPadding: 10,
              callbacks: {
                label: function(tooltipItem, chart) {
-                 var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                 return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                 return 'Số lượng' + ': ' + number_format(tooltipItem.yLabel);
                }
              }
            }
