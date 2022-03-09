@@ -1,0 +1,160 @@
+.tabletkb
+{
+    margin: auto;
+    font-size: 13px;
+}
+
+.tabletkb th
+{
+    background: #6595c2;
+    text-align: center;
+    width: 100px;
+    color: #fff;
+    padding: 3px 0;
+}
+
+.tabletkb td
+{
+    height: 30px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;    
+}
+
+.tkb
+{
+    position: absolute;
+    width: 95px;
+    background: #fff;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.tkb_span1
+{
+    font-size: 10px;
+    color: #000;
+    width: 90%;
+}
+
+.tkb_span2
+{
+    color: #333;
+}
+
+.tkb_lock
+{
+    position: absolute;
+    width: 96px;
+    background: pink;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+
+.tablesv
+{
+    width: 760px;
+    margin: auto;
+}
+
+.tablesv a
+{
+    color: #06f;
+}
+
+.tablesv a:hover
+{
+    text-decoration: underline;
+}
+
+.tablesv th
+{
+    background: #6595c2;
+    color: #fff;
+    padding: 2px;
+}
+
+.tablesv td
+{
+    border-bottom: 1px dotted #ccc;    
+    background: #fff;    
+}
+
+.abc td
+{
+    text-align: center;
+}
+
+.abc input
+{
+    margin: 2px;
+    width: 30px;
+}
+
+.title-h3
+{
+    color: #fff;
+}
+
+.fr
+{
+    background: url('images/menu2.png') white;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 1px 10px;
+    margin: 0;
+}
+
+.fr:hover
+{
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.ulgiaovien a
+{
+    color: #06f;
+    font-weight: bold;
+}
+
+.ulgiaovien a:hover
+{
+    text-decoration: underline;
+}
+
+.content
+{
+    text-align: center;
+}
+
+.hide-link
+{
+    color: #06f;
+}
+
+.hide-link:hover
+{
+    text-decoration: underline;
+}
+
+.ThongbaoThi
+{
+    font-weight: bold;
+    display: block;
+    list-style: none;
+}
+.ThongbaoThi li
+{
+    float: left;
+    margin-right: 10px;
+}
+
+.maquee
+{    
+    width: 450px;
+    right: 10px;
+    top: 80px;
+    float: right;
+    position: fixed;
+}
