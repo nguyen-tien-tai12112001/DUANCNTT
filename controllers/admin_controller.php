@@ -1,5 +1,5 @@
 <?php
-require_once("./models/sinhvien.php");
+require_once("./models/admin.php");
 use models\DatabaseConnection;
 class admin_controller
 {
@@ -8,7 +8,7 @@ class admin_controller
        
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
-        $this->db = new sinhvien($dbc);
+        $this->db = new admin($dbc);
         $action = filter_input(INPUT_GET, "action");
         if (method_exists($this, $action)) {
             $this->$action();
@@ -29,6 +29,7 @@ class admin_controller
         $giangvienSL =$this->db->giangvienSL();
         $chuyennganhSL =$this->db->chuyennganhSL();
         $monhocSL =$this->db->monhocSL();
+        $diemtrungbinh= $this->db->diemtrungbinh();
         require_once("./view/admin/dashboardadmin.php");
     }
 
@@ -62,12 +63,10 @@ class admin_controller
         $countsGVNam =$this->db->countsGVNam();
         $countsGVNu =$this->db->countsGVNu();
         $countsSVNu =$this->db->countsSVNu();
-        
-
-
         $giangvienSL =$this->db->giangvienSL();
         $chuyennganhSL =$this->db->chuyennganhSL();
         $monhocSL =$this->db->monhocSL();
+        $diemtrungbinh= $this->db->diemtrungbinh();
         require_once("./view/admin/dashboardadmin.php");
     }
     function themsinhvien()
