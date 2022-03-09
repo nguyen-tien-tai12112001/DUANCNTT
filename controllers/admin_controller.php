@@ -107,7 +107,7 @@ class admin_controller
               echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
 
             }
-            require_once("./view/admin/themsinhvien.php");
+            require_once("./view/admin/suasinhvien.php");
         }
         if(isset($_GET['id'])){
             $id = $_GET['id'];
@@ -135,7 +135,7 @@ class admin_controller
               echo '<option value="'.$infoCN['magiangvien'].'">'.$infoCN['hovaten'].'</option>'; 
 
             }
-            require_once("./view/admin/themsinhvien.php");
+            require_once("./view/admin/suagiangvien.php");
         }
         if(isset($_GET['id'])){
             $id = $_GET['id'];
