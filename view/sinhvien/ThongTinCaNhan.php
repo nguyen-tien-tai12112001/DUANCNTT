@@ -46,9 +46,10 @@
     font-size: 18px;
     padding: 5px 0px;
   }
+
   .table input {
     font-size: 18px;
-   
+
   }
 </style>
 
@@ -89,7 +90,7 @@
           </tr>
           <tr>
             <td width="30%">Giáo viên chủ nhiệm:</td>
-            <td><?= $data['GVCN'] ?></td>
+            <td><?= $data['tengv'] ?></td>
           </tr>
           <tr>
             <td>Điện thoại:</td>
@@ -153,7 +154,7 @@
               </tr>
               <tr>
                 <td class="modal-td">Email SV:</td>
-                <td class="modal-td"> <input class="form-control" value="<?= $data['email'] ?>" name="email" type="email" id="email"  readonly></td>
+                <td class="modal-td"> <input class="form-control" value="<?= $data['email'] ?>" name="email" type="email" id="email" readonly></td>
               </tr>
               <tr>
                 <td class="modal-td">Chỗ ở hiện nay:</td>
@@ -165,7 +166,7 @@
         <div id="alert"></div>
         <div class="modal-footer">
           <button type="button" class="btn btn-error" data-dismiss="modal">Close</button>
-          <button class="btn btn-primary" >OK</button>
+          <button class="btn btn-primary">OK</button>
         </div>
       </form>
     </div>
@@ -173,84 +174,76 @@
   </div>
 </div>
 <script type="text/javascript">
-	$("#update").submit(function(e){
-			e.preventDefault();
-		
-			
-			let image = $("input[name='image']").val();
-			
-			var gioitinh = $('#gioitinh').val();
-      var CMND = $('#cmnd').val();
-      
-      var phone = $('#dienthoai').val();
-      var email = $('#email').val();
-      var diachi = $('#diachi').val();
-      
-			
-			
-			if(image == null || image == "")
-			{
-				$("#alert").html('<strong class="text-danger">Ảnh không được để trống</strong>'); 
-				$("input[name='image']").focus();
-				return;
-			}
-			
-			else if (CMND == null || CMND == "") {
-        $("#alert").html('<strong class="text-danger">CMND không được để trống</strong>');
-        $("input[name='cmnd']").focus();
-        return;
-      } else if (CMND.length < 12 || CMND.length > 12) {
-        $("#alert").html('<strong class="text-danger">CMND bao gồm 12 kí tự</strong>');
-        $("input[name='cmnd']").focus();
-        return;
-      } else if (isNaN(CMND)) {
-        $("#alert").html('<strong class="text-danger">CMND phải là số</strong>');
-        $("input[name='cmnd']").focus();
-        return;
-      }
-      else if (phone == null || phone == "") {
-        $("#alert").html('<strong class="text-danger">Số điện thoại không được để trống</strong>');
-        $("input[name='phone']").focus();
-        return;
+  $("#update").submit(function(e) {
+    e.preventDefault();
 
-      } else if (phone.length != 10) {
-        $("#alert").html('<strong class="text-danger">Độ dài của số điện thoại là 10 ký tự</strong>');
-        $("input[name='phone']").focus();
-        return;
-      } else if (isNaN(phone)) {
-        $("#alert").html('<strong class="text-danger">Số điện thoại phải là số</strong>');
-        $("input[name='phone']").focus();
-        return;
-      }else if (diachi == null || diachi == "") {
-            $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
-            $("input[name='diachi']").focus();
-            return;
-      } 
-		
-			else
-			{
-        
-				const url = $(this).attr("action");
-        
-			    		$.ajax({		        
-    				        url ,
-    				        method: "POST",
-    				        data: {
-                                image : image,
-                                gioitinh : gioitinh,
-                                CMND : CMND,
-                                phone : phone,
-                                email : email,
-                                diachi : diachi
-                            },
-                            
-                            success: function (data) {
-                              location.reload() 
-				        },
-				   		});		   		  
-				
-			}
-						  
-		});
-	
+
+    let image = $("input[name='image']").val();
+
+    var gioitinh = $('#gioitinh').val();
+    var CMND = $('#cmnd').val();
+
+    var phone = $('#dienthoai').val();
+    var email = $('#email').val();
+    var diachi = $('#diachi').val();
+
+
+
+    if (image == null || image == "") {
+      $("#alert").html('<strong class="text-danger">Ảnh không được để trống</strong>');
+      $("input[name='image']").focus();
+      return;
+    } else if (CMND == null || CMND == "") {
+      $("#alert").html('<strong class="text-danger">CMND không được để trống</strong>');
+      $("input[name='cmnd']").focus();
+      return;
+    } else if (CMND.length < 12 || CMND.length > 12) {
+      $("#alert").html('<strong class="text-danger">CMND bao gồm 12 kí tự</strong>');
+      $("input[name='cmnd']").focus();
+      return;
+    } else if (isNaN(CMND)) {
+      $("#alert").html('<strong class="text-danger">CMND phải là số</strong>');
+      $("input[name='cmnd']").focus();
+      return;
+    } else if (phone == null || phone == "") {
+      $("#alert").html('<strong class="text-danger">Số điện thoại không được để trống</strong>');
+      $("input[name='phone']").focus();
+      return;
+
+    } else if (phone.length != 10) {
+      $("#alert").html('<strong class="text-danger">Độ dài của số điện thoại là 10 ký tự</strong>');
+      $("input[name='phone']").focus();
+      return;
+    } else if (isNaN(phone)) {
+      $("#alert").html('<strong class="text-danger">Số điện thoại phải là số</strong>');
+      $("input[name='phone']").focus();
+      return;
+    } else if (diachi == null || diachi == "") {
+      $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
+      $("input[name='diachi']").focus();
+      return;
+    } else {
+
+      const url = $(this).attr("action");
+
+      $.ajax({
+        url,
+        method: "POST",
+        data: {
+          image: image,
+          gioitinh: gioitinh,
+          CMND: CMND,
+          phone: phone,
+          email: email,
+          diachi: diachi
+        },
+
+        success: function(data) {
+          location.reload()
+        },
+      });
+
+    }
+
+  });
 </script>
