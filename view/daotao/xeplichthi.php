@@ -24,13 +24,17 @@
   }
 
   .tim-kiem {
-    font-size: 16px;
+    font-size: 14px;
+    height: 41px;
+    display: flex;
   }
 
+
+
   .tim-kiem input {
-    padding: 6px 10px;
-
-
+    padding: 5px 9px;
+    margin-right: -5px;
+    font-size: 15px;
   }
 
   .btnTimKiem {
@@ -157,15 +161,13 @@
 
                     </td>
                     <td><select id="ca<?= $i ?>" class="form-control">
-                        <?php if($value['cathi'] == '')
-                        {
-                          
-                          echo '<option >Chưa có ca thi</option>'; 
-                        }
-                        else{
-                          echo '<option >'.$value['cathi'].'</option>'; 
-                        }?>
-                        
+                        <?php if ($value['cathi'] == '') {
+
+                          echo '<option >Chưa có ca thi</option>';
+                        } else {
+                          echo '<option >' . $value['cathi'] . '</option>';
+                        } ?>
+
                         <option>1-2</option>
                         <option>1-3</option>
                         <option>1-5</option>
@@ -180,35 +182,28 @@
                           var data = "<?= $value['mamon'] ?>";
                           var data1 = $(ngaythi<?= $i ?>).val();
                           var data2 = $(ca<?= $i ?>).val();
-                          
-                          if(data == null || data == "")
-                          {
+
+                          if (data == null || data == "") {
                             alert("Môn học không được để trống");
                             return;
-                          }
-                          else if(data1 == null || data1 == "")
-                          {
+                          } else if (data1 == null || data1 == "") {
                             alert("Ngày thi không được để trống");
                             return;
-                          }
-                          else if(data2 == "Chưa có ca thi" )
-                          {
+                          } else if (data2 == "Chưa có ca thi") {
                             alert("Ca thi không được để trống");
                             return;
-                          }
-                          else
-                          {
+                          } else {
                             var thongbao = "Cập nhật thành công";
-                          alert(thongbao);
-                          $.get("./index.php", {
-                            controller: "daotao",
-                            action: "capnhatlichthi",
-                            mamon: data,
-                            ngaythi: data1,
-                            cathi: data2
-                          }, function(data) {})
+                            alert(thongbao);
+                            $.get("./index.php", {
+                              controller: "daotao",
+                              action: "capnhatlichthi",
+                              mamon: data,
+                              ngaythi: data1,
+                              cathi: data2
+                            }, function(data) {})
                           }
-                         
+
                         });
                       });
                     </script>

@@ -128,7 +128,7 @@
     <!-- End Top -->
     <!-- Page -->
     <div id="page" style="width: 90%; display: flex; left: 5%; margin-left: 0px;">
-      <div id="left" style="width: 250px">
+      <div id="left" style="width: 260px">
         <ul>
           <li>
             <h3 class="title">Toàn trường</h3>

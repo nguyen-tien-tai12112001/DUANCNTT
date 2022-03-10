@@ -159,9 +159,7 @@
                         <option>Cấm thi</option>
                     </select>
                 </div>
-                <button>
-                    Xuất file
-                </button>
+                
             </div>
 
 
@@ -196,7 +194,7 @@
                         <td  class="text-center">
                             <?= $value['hovaten'] ?>
                         </td>
-                        <td  class="text-center">
+                        <td  class="text-center" >
                             <script>
                                 $(function() {
                                     $('#sapxep<?= $i ?>').trigger('change'); //This event will fire the change event. 
@@ -218,12 +216,12 @@
                                     });
                                 });
                             </script>
-                            <select  class="form-control" style="width:130px" id="sapxep<?= $i ?>">
+                            <select  class="form-control"  id="sapxep<?= $i ?>">
                                 <?php if ($value['trangthai'] == 1) { ?>
                                     <option>Đang học</option>
                                     <option>Cấm thi</option>
                                 <?php } else { ?>
-                                    <option>Cấm thi</option>
+                                    <option >Cấm thi</option>
                                     <option>Đang học</option>
                                 <?php } ?>
                             </select>
@@ -234,9 +232,7 @@
                                  padding: 8px;
                                 ">
 
-                            <Button type="button" data-toggle="modal" data-target="#myModal2">
-                                <span">Đánh Giá</span>
-                            </Button>
+                            
 
                             <Button class="chitiet" id="<?= $value['masinhvien'] ?>" style="margin-left: 5px;" type="button" data-toggle="modal" data-target="#myModal1">
                                 <span">Chi Tiêt</span>
@@ -278,59 +274,7 @@
 
 
 
-            <!-- Modal đánh giá -->
-            <div class="modal fade" id="myModal2" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Đánh Giá Sinh Viên</h4>
-                        </div>
-                        <div class="modal-body">
-                            <!-- <p>Some text in the modal.</p> -->
-                            <table width="100%">
-                                <tbody class="table">
-                                    <tr>
-                                        <td class="modal-td">Điểm rèn luyện</td>
-                                        <td class="modal-td">
-                                            <select class="form-control">
-                                                <option value="">Giỏi</option>
-                                                <option value="">Khá</option>
-                                                <option value="">Trung Bình</option>
-                                                <option value="">Kém</option>
-                                            </select>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="modal-td">Ý Thức</td>
-                                        <td class="modal-td">
-                                            <select class="form-control">
-                                                <option value="">Giỏi</option>
-                                                <option value="">Khá</option>
-                                                <option value="">Trung Bình</option>
-                                                <option value="">Kém</option>
-                                            </select>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="modal-td">Lời văn</td>
-                                        <td class="modal-td">
-                                            <textarea name="" id="" class="form-control"></textarea>
-
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-                        </div>
-                    </div>
+          
 
 
                     </body>

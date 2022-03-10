@@ -59,7 +59,12 @@ class daotao_controller {
     }
     function loctheotrangthai()
     {
-        $listStudent=$this->daotao->loctheotrangthai($_GET['info']);
+        if($_GET['info']=="Tất cả"){
+            $listStudent = $this->daotao->getAllData('sinhvien');
+        }
+        else{
+            $listStudent=$this->daotao->loctheotrangthai($_GET['info']);
+        }
         require_once("./view/daotao/PDTTimKiemSinhVien.php");
     }
     function uptrangththai()
@@ -118,7 +123,7 @@ class daotao_controller {
         $listMonHoc = $this->daotao->monhocgiangvien();
         $listMonHoc1 = $this->daotao->getAllData('monhoc');
         $listChuyenNganh = $this->daotao->getAllData('chuyennganh');
-        $listGiangVien = $this->daotao->getAllData_gv('giangvien');
+        $listGiangVien = $this->daotao->getAllData_gv_tt('giangvien');
         $listLop = $this->daotao->listlop();
         //$listGiangVien = $this->daotao->giaovienmonhoc();
         //$listGiangVienMonHoc = $this->daotao->getAllData('gv-monhoc');
@@ -543,6 +548,8 @@ class daotao_controller {
     function xoalop()
     {
         $this->daotao->xoalop($_GET['info']);
+        $data_cn=$this->daotao->getAllData("chuyennganh");
+
         $lop=$this->daotao->getAllData("lopcn");
         require_once("./view/daotao/Danhsachlophoc_ajax.php");
     }

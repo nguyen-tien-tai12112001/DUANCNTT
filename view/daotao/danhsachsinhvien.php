@@ -1,9 +1,9 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <style>
-  
-  td{
+  td {
     text-align: center;
   }
+
   th {
     text-align: center;
   }
@@ -12,7 +12,7 @@
     padding: 10px;
   }
 
-  
+
 
   a {
     text-decoration: none;
@@ -31,13 +31,14 @@
   }
 
   .tim-kiem {
+    font-size: 14px;
+    height: 41px;
     display: flex;
-    /* gap:10px; */
   }
 
   .tim-kiem input {
-    padding: 5px 8px;
-    font-size: 15px;
+    padding: 5px 9px;
+    margin-right: -5px;
   }
 
   .form {
@@ -99,7 +100,7 @@
 
 
 <!-- Right -->
-<div id="right" style="width: 100%;">
+<div id="right" style="width: 100%; margin-left:10px">
   <div class="title">
     Quản lý sinh viên
 
@@ -124,45 +125,47 @@
         });
       });
     </script>
-    <div class="chuyen-nganh">
-      <p>Chọn chuyên ngành:</p>
-      <select class="form-control" id="chuyennganh1">
-        <option class="a" id="Tất cả">Tất cả</option>
-        <?php
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex;" class="chuyen-nganh">
+        <p style="width:250px">Chọn chuyên ngành:</p>
+        <select style="padding: 6px 22px;" class="form-control" id="chuyennganh1">
+          <option class="a" id="Tất cả">Tất cả</option>
+          <?php
 
-        foreach ($listCN as $CN) {
-          echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-        }
-        ?>
+          foreach ($listCN as $CN) {
+            echo '<option  value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+          }
+          ?>
+        </select>
 
-      </select>
-
+      </div>
+      <div style="display: flex;" class="trangthai">
+        <p style="width:250px">Chọn Trạng Thái:</p>
+        <select class="form-control" id="trangthai">
+          <option>Tất cả</option>
+          <option>Đang học</option>
+          <option>Đã tốt nghiệp</option>
+          <option>Đang bảo lưu</option>
+          <option>Đã thôi học</option>
+        </select>
+        <script>
+          $(function() {
+            $('#trangthai').trigger('change'); //This event will fire the change event. 
+            $('#trangthai').change(function() {
+              var data = $(this).val();
+              $.get("./index.php", {
+                controller: "daotao",
+                action: "loctheotrangthai",
+                info: data
+              }, function(data) {
+                $("#bangdiem1").html(data);
+              })
+            });
+          });
+        </script>
+      </div>
     </div>
-    <div class="trangthai">
-      <p>Chọn Trạng Thái:</p>
-      <select class="form-control" id="trangthai">
-        <option>Tất cả</option>
-        <option>Đang học</option>
-        <option>Đã tốt nghiệp</option>
-        <option>Đang bảo lưu</option>
-        <option>Đã thôi học</option>
-      </select>
-      <script>
-      $(function() {
-        $('#trangthai').trigger('change'); //This event will fire the change event. 
-        $('#trangthai').change(function() {
-          var data = $(this).val();
-          $.get("./index.php", {
-            controller: "daotao",
-            action: "loctheotrangthai",
-            info: data
-          }, function(data) {
-            $("#bangdiem1").html(data);
-          })
-        });
-      });
-    </script>
-    </div>
+
     <div class="tim-kiem">
       <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã sinh viên">
       <button class="btnTimKiem">Tìm kiếm</button>
@@ -376,7 +379,7 @@
               <td class="modal-td">Email SV:</td>
               <td class="modal-td"><input type="text" class="form-control" value="A<?= $getmasv + 1 ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
             </tr>
-           
+
             <tr>
               <td class="modal-td">Địa chỉ hộ khẩu:</td>
               <td class="modal-td">
@@ -401,8 +404,8 @@
               <td class="modal-td">
                 <select class="form-control" id="lop" name="lop">
                   <option value="">Chọn lớp</option>
-                  
-                  
+
+
                 </select>
               </td>
             </tr>
@@ -429,7 +432,7 @@
                       data: 'machuyennganh=' + machuyennganh,
                       success: function(html) {
                         $('#giaovien').html(html);
-                        
+
                       }
                     });
                   } else {
@@ -447,7 +450,7 @@
                       data: 'machuyennganh=' + machuyennganh,
                       success: function(html) {
                         $('#lop').html(html);
-                        
+
                       }
                     });
                   } else {
@@ -530,8 +533,7 @@
             $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
             $("select[name='diachi']").focus();
             return;
-          } 
-          else if (chuyennganh == null || chuyennganh == "") {
+          } else if (chuyennganh == null || chuyennganh == "") {
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;
@@ -539,7 +541,7 @@
             $("#alert").html('<strong class="text-danger">Lớp không được để trống</strong>');
             $("select[name='lop']").focus();
             return;
-          }else if (giaovien == null || giaovien == "") {
+          } else if (giaovien == null || giaovien == "") {
             $("#alert").html('<strong class="text-danger">Giáo viên không được để trống</strong>');
             $("select[name='giaovien']").focus();
             return;

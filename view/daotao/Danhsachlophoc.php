@@ -1,30 +1,20 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
-  
-  td{
-    text-align: center;
-  }
-  .modal-td {
-    padding: 10px;
-  }
 
   
 
-  a {
-    text-decoration: none;
-  }
-
-  .item-monhoc {
-    align-items: center;
-  }
-
-  .chuyen-nganh {
+  .form-tkb {
     display: flex;
-    gap: 5px;
-    font-size: 16px;
-    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
   }
+
+  
+
+  
+
+  
 
   .tim-kiem {
     display: flex;
@@ -41,6 +31,52 @@
     gap: 10px;
     justify-content: space-between;
     margin-bottom: 2rem;
+  }
+  td {
+    text-align: center;
+  }
+
+  .modal-td {
+    padding: 10px;
+  }
+
+
+
+  a {
+    text-decoration: none;
+  }
+
+  .item-monhoc {
+    align-items: center;
+  }
+
+  .chuyen-nganh {
+    display: flex;
+    
+    font-size: 16px;
+    
+  }
+  .chuyen-nganh p{
+    width: 150px;
+    
+  }
+
+  .tim-kiem {
+    display: flex;
+    /* gap:10px; */
+  }
+
+  .tim-kiem input {
+    padding: 5px 8px;
+    font-size: 15px;
+  }
+
+  .form {
+    gap: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   .btnTimKiem {
@@ -80,6 +116,16 @@
   .btnTimKiem:hover::before {
     transform: translate3d(50%, -50%, 0) scale3d(15, 15, 15);
   }
+
+  .tim-kiem {
+    font-size: 14px;
+    height: 41px;
+  }
+
+  .tim-kiem input {
+    padding: 5px 9px;
+    margin-right: -5px;
+  }
 </style>
 
 <!-- Right -->
@@ -90,11 +136,44 @@
   </div>
   <div class="form">
 
-    <button type="button" data-toggle="modal" data-target="#ThemLopHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm Lớp Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-    <div class="tim-kiem">
-      <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
-      <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
+    <button type="button" data-toggle="modal" data-target="#ThemLopHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm lớp học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+  </div>
+
+  <div class="form-tkb">
+    <div class="chuyen-nganh">
+      <div style="display: flex;">
+        <p>Chọn chuyên ngành:</p>
+        <select class="form-control" id="chuyennganh1" style="width:60%;">
+      <option class="a" id="Tất cả">Tất cả</option>
+      <?php
+      foreach ($data_cn as $CN) {
+        echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+      }
+      ?>
+    </select>
+      </div>
       <script>
+      $(function() {
+        $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
+        $('#chuyennganh1').change(function() {
+          var data = $(this).val();
+          $.get("./index.php", {
+            controller: "daotao",
+            action: "locloptheocn",
+            info: data
+          }, function(data) {
+            $("#info").html(data);
+          })
+        });
+      });
+    </script>
+    </div>
+
+    <div class="tim-kiem">
+      <input id="timkiem" type="text" placeholder="Nhập mã lớp,tên lớp">
+      <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
+    </div>
+    <script>
         $(function() {
           $('#tntimkiem').trigger('click'); //This event will fire the change event. 
           $('#tntimkiem').click(function() {
@@ -109,40 +188,11 @@
           });
         });
       </script>
-    </div>
+    
   </div>
-  <div style="display: flex;">
-      <p>Chọn chuyên ngành:</p>
-      <select  class="form-control" id="chuyennganh1" style="width:20%;margin-left:-50px">
-        <option class="a" id="Tất cả">Tất cả</option>
-        <?php
-              foreach ($data_cn as $CN) {
-                echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-            }
-            ?>
-            </select>
-            <script>
-              $(function() {
-                $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
-                $('#chuyennganh1').change(function() {
-                  var data = $(this).val();
-                  $.get("./index.php", {
-                    controller:"daotao",
-                    action:"locloptheocn",
-                    info: data
-                  }, function(data) {
-                    $("#info").html(data);
-                  })
-                });
-              });
-            </script>
-  </div>
-  <!-- <div style="display: flex;">
-      <p>Chọn môn học:</p>
-      <select  class="form-control" id="chuyennganh1" style="width:20%;margin-left:-50px">
-        <option class="a" id="Tất cả">Tất cả</option>
-      </select>
-  </div> -->
+
+  
+  
   <div id="info">
     <table cellspacing="3" cellpadding="0" border="0px" width="100%">
       <tbody>
@@ -164,23 +214,22 @@
                     <th class="text-center">Chuyên ngành</th>
                     <th class="text-center">Trạng Thái</th>
                   </tr>
-                  <?php $stt=0; 
-                  foreach($lop as $info){ $stt++; ?>
-                  <tr>
-                    <td><?= $stt?></td>
-                    <td><?= $info['malop']?></td>
-                    <td><?= $info['tenlop']?></td>
-                    <td><?php
-                      foreach ($data_cn as $CN) {
-                        if($CN['machuyennganh'] ==  $info['chuyennganh'])
-                        {
-                          echo $CN['tenchuyennganh'];
-                        }
-                          
-                      }
-                    ?></td>
-                    <td class="item-monhoc">
-                    <button class="btnTimKiem capnhat" type="button" id="<?= $info['malop'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
+                  <?php $stt = 0;
+                  foreach ($lop as $info) {
+                    $stt++; ?>
+                    <tr>
+                      <td><?= $stt ?></td>
+                      <td><?= $info['malop'] ?></td>
+                      <td><?= $info['tenlop'] ?></td>
+                      <td><?php
+                          foreach ($data_cn as $CN) {
+                            if ($CN['machuyennganh'] ==  $info['chuyennganh']) {
+                              echo $CN['tenchuyennganh'];
+                            }
+                          }
+                          ?></td>
+                      <td class="item-monhoc">
+                        <button class="btnTimKiem capnhat" type="button" id="<?= $info['malop'] ?>" data-toggle="modal" data-target="#SuaMonHoc">Cập nhật</button>
                         <script>
                           $(document).ready(function() {
                             $(".capnhat").click(function() {
@@ -213,9 +262,9 @@
                           });
                         </script>
                       </td>
-                  </tr>
+                    </tr>
 
-                  <?php }?>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -251,86 +300,80 @@
               <td class="modal-td" width="30%">Mã Lớp:</td>
               <td class="modal-td"><input id="malop" name="malop" type="text" class="form-control"></td>
             </tr>
-              <tr>
-                <td class="modal-td" width="30%">Tên Lớp</td>
-                <td class="modal-td"><input id="tenlop" name="tenlop" type="text" class="form-control"></td>
-                <tr>
-                                <td class="modal-td">Chuyên Ngành:</td>
-                                <td class="modal-td">
-                                    <select class="form-control" id="chuyennganh" >
-                                        <option value="">Chọn chuyên ngành</option>
-                                        <?php
-              foreach ($data_cn as $CN) {
-                echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-            }
-            ?>
-                                    </select>
-                                </td>
-                            </tr>
-              </tr>
+            <tr>
+              <td class="modal-td" width="30%">Tên Lớp</td>
+              <td class="modal-td"><input id="tenlop" name="tenlop" type="text" class="form-control"></td>
+            <tr>
+              <td class="modal-td">Chuyên Ngành:</td>
+              <td class="modal-td">
+                <select class="form-control" id="chuyennganh">
+                  <option value="">Chọn chuyên ngành</option>
+                  <?php
+                  foreach ($data_cn as $CN) {
+                    echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+                  }
+                  ?>
+                </select>
+              </td>
+            </tr>
+            </tr>
           </tbody>
         </table>
       </div>
       <div id="alert"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="themmon" class="btn btn-success" >Xác nhận</button>
+        <button type="button" id="themmon" class="btn btn-success">Xác nhận</button>
       </div>
       <script>
-              $(function() {
-                $('#themmon').trigger('click'); //This event will fire the change event. 
-                $('#themmon').click(function() {
-                  var malop = $('#malop').val();
-                  var tenlop = $('#tenlop').val();
-                  var chuyennganh = $('#chuyennganh').val();
-                  if(malop == null || malop == "")
-                  {
-                    $("#alert").html('<strong class="text-danger">Mã lớp học không được để trống</strong>');
-                    $("input[name='malop']").focus();
-                    return;
-                  }
-                  <?php 
-                      $result = "";
-                      foreach ($lop as $sl)
-                      {
-                          
-                          
-                          ?>if(malop == "<?=$sl['malop']?>")
-                                    {
-                                  $("#alert").html('<strong class="text-danger">Mã lớp đã tồn tại</strong>'); 
-                            $("input[name='malop']").focus();
-                            return;
-                                    }<?php
-                      }
-                  ?>
-                  else if (tenlop == null || tenlop == "")
-                  {
-                    $("#alert").html('<strong class="text-danger">Tên lớp học không được để trống</strong>');
-                    $("input[name='tenlop']").focus();
-                    return;
-                  }
-                  else if (chuyennganh == null || chuyennganh == "")
-                  {
-                    $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
-                    $("select[name='chuyennganh']").focus();
-                    return;
-                  }
-                  else{
-                    $('#ThemLopHoc').modal('hide');
-                      $.get("./index.php", {
-                      controller:"daotao",
-                      action:"themlop",
-                      malop: malop,
-                      tenlop: tenlop,
-                      chuyennganh: chuyennganh
-                    }, function(data) {
-                      $("#info").html(data);
-                      location.reload();
-                    })
-                  }
-                });
-              });
-            </script>
+        $(function() {
+          $('#themmon').trigger('click'); //This event will fire the change event. 
+          $('#themmon').click(function() {
+            var malop = $('#malop').val();
+            var tenlop = $('#tenlop').val();
+            var chuyennganh = $('#chuyennganh').val();
+            if (malop == null || malop == "") {
+              $("#alert").html('<strong class="text-danger">Mã lớp học không được để trống</strong>');
+              $("input[name='malop']").focus();
+              return;
+            }
+            <?php
+            $result = "";
+            foreach ($lop as $sl) {
+
+
+            ?>if(malop == "<?= $sl['malop'] ?>") {
+              $("#alert").html('<strong class="text-danger">Mã lớp đã tồn tại</strong>');
+              $("input[name='malop']").focus();
+              return;
+            }
+          <?php
+            }
+          ?>
+          else if (tenlop == null || tenlop == "") {
+            $("#alert").html('<strong class="text-danger">Tên lớp học không được để trống</strong>');
+            $("input[name='tenlop']").focus();
+            return;
+          } else if (chuyennganh == null || chuyennganh == "") {
+            $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
+            $("select[name='chuyennganh']").focus();
+            return;
+          } else {
+            $('#ThemLopHoc').modal('hide');
+            $.get("./index.php", {
+              controller: "daotao",
+              action: "themlop",
+              malop: malop,
+              tenlop: tenlop,
+              chuyennganh: chuyennganh
+            }, function(data) {
+              $("#info").html(data);
+              location.reload();
+            })
+          }
+          });
+        });
+      </script>
     </div>
 
   </div>

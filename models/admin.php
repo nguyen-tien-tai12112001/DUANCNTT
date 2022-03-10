@@ -30,6 +30,7 @@
             $this->result = $this->conn->query($sql);
             return $this->result;
         }
+        
         //thực hiện lấy dữ liệu
         public function getData(){
                    

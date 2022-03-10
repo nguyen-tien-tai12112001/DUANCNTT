@@ -125,7 +125,11 @@
             $data=$this->execute($sql);
             return $data;
         }
-
+        public function listTeacherLogin(){
+            $sql = "select * from `giangvien` where `trangthai` = 1";
+            $data=$this->execute($sql);
+            return $data;
+        }
         public function updategiangvien($mgv,$img,$gioitinh,$cmnd,$dienthoai,$email,$diachi){
             $sql="UPDATE giangvien SET `image`='$img', gioitinh='$gioitinh', cmnd='$cmnd', dienthoai='$dienthoai', email='$email', diachi='$diachi' WHERE magiangvien='$mgv'";
             return $this->execute($sql);

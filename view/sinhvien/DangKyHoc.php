@@ -164,7 +164,11 @@
       <?php if (!isset($giodk['ngaybatdau'])) { ?>
         <h2>Hiện chưa có thời gian đăng ký học:</h2>
       <?php } else { ?>
+<<<<<<< HEAD
         <h2>Thông báo thời gian đăng ký học:</h2>
+=======
+        <h2 style="padding: 0;">Thông báo thời gian đăng ký học:</h2>
+>>>>>>> 6c72a18287dad3312f43eeefc84e5c21de38785e
         <div class="time">
           <div class="times_item">
             <span><?= substr($giodk['ngaybatdau'], 0, -8); ?></span>
@@ -213,7 +217,7 @@
                     $checkmm = 0;
                   }
                 }
-                if ($checkmm == 1) {
+                if ($checkmm == 1) {  $i++;
               ?>
 
                   <tr>
@@ -293,7 +297,7 @@
           <h2 style="text-align: center; font-weight: bold">
             Danh sách môn đã đăng ký
           </h2>
-          <div style="width: 700px; height: 430px;margin-bottom:50px;">
+          <div style="width: 700px; height: 430px; margin-bottom:50px;">
             <table class="tabletkb" cellpadding="0" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -310,7 +314,7 @@
               <tbody>
                 <?php $i = 0;
                 foreach ($data1 as $info) {
-                  $i++;
+                  
                   $checkmmm = 1;
                   foreach ($data3 as $info3) {
                     if ($info['mamon'] == $info3['mamon']) {
@@ -318,7 +322,8 @@
                       $checkmmm = 0;
                     }
                   }
-                  if ($checkmmm == 1) { ?>
+                  if ($checkmmm == 1) { $i++; ?>
+                  
                     <tr>
                       <td style="
                       width: 30px;

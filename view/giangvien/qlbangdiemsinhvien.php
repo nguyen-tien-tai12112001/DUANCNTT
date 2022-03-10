@@ -6,39 +6,39 @@
                         ">
 
                 <tr style="background-color: #e4e8e9;">
+                <th style="border: 1px solid #dddddd;
+            text-align: center;
+            padding: 5px;">
+                    Mã SV
+                </th>
                     <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        Họ tên
+                text-align: center;
+                padding: 5px;">
+                        Họ và tên
                     </th>
                     <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        Mã sinh viên
-                    </th>
-                    <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;
+                padding: 5px;">
                         Môn học
                     </th>
                     <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        Điểm quá trình
+                text-align: center;
+                padding: 5px;">
+                        Điểm QT
                     </th>
                     <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        Điểm cuối kỳ
+                text-align: center;
+                padding: 5px;">
+                        Điểm CK
                     </th>
                     <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;
+                padding: 5px;">
                         Điểm tổng kết
                     </th>
                     <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;
+                padding: 5px;">
 
                     </th>
                 </tr>
@@ -88,15 +88,15 @@
             </script>
                 <?php if($svl2!=0){ $stt=0; foreach ($svl2 as $info){ $stt++; ?>
                     <tr>
+                <td class="masinhvien<?= $stt?>" id="<?= $info['masinhvien']?>" name="masinhvien" style="border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;">
+                    <?= $info['masinhvien']?>
+                </td>
                     <td class="hovaten<?= $stt?>" id="<?= $info['hovaten']?>"name="hovaten" style="border: 1px solid #dddddd;
                 text-align: left;
                 padding: 8px;">
                         <?= $info['hovaten']?>
-                    </td>
-                    <td class="masinhvien<?= $stt?>" id="<?= $info['masinhvien']?>" name="masinhvien" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                        <?= $info['masinhvien']?>
                     </td>
                     <td class="tenmon<?= $stt?>" id="<?= $info['tenmon']?>" name="tenmon" style="border: 1px solid #dddddd;
                 text-align: left;

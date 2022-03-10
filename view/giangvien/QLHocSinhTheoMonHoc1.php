@@ -55,9 +55,7 @@
                                  padding: 8px;
                                 ">
 
-                                <Button type="button" data-toggle="modal" data-target="#myModal2">
-                                    <span style="padding: 5px; ">Đánh Giá</span>
-                                </Button>
+                                
 
                                 <Button class="chitiet" id="<?= $value['masinhvien']?>" style="margin-left: 5px;" type="button" data-toggle="modal"
                                     data-target="#myModal1">

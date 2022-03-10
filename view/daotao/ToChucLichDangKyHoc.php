@@ -7,6 +7,15 @@
     margin-bottom: 15px;
 
   }
+  .chuyen-nganh p{
+    width:160px;
+    font-size: 17px;
+
+  }
+  .chuyen-nganh select{
+    font-size: 16px;
+
+  }
 
   .list-monhoc {
 
@@ -21,17 +30,26 @@
     margin-top: 15px;
     font-size: 16px;
     display: flex;
+    flex-direction: column;
     gap: 2rem;
+  }
+  .ngay-dky p{
+    width:150px;
+    font-size: 17px;
+
+  }
+  .ngay-dky input{
+    width:300px;
   }
 
   .ngay-bdau {
     display: flex;
-    gap: 5px;
+    gap: 2px;
   }
 
   .ngay-ketthuc {
     display: flex;
-    gap: 5px;
+    gap: 2px;
   }
 
   .btn-xacnhan {
@@ -40,7 +58,7 @@
     font-size: inherit;
     font-family: inherit;
     color: white;
-    padding: 1em 1.5em;
+    padding: 0.5em 1em;
     margin-top: 10px;
     outline: none;
     border: none;

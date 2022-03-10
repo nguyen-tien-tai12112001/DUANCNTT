@@ -75,6 +75,12 @@
     transition: transform 0.45s ease-in-out;
     transform: translate3d(200%, 0, 0) rotate(35deg);
   }
+  table td{
+    font-size: 18px;
+  }
+  table th{
+    font-size: 18px;
+  }
 </style>
 <div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">

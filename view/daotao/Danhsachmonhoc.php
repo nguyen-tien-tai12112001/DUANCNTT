@@ -1,28 +1,25 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
-  
-  td{
+  td {
     text-align: center;
   }
+
   .modal-td {
     padding: 10px;
   }
 
-  
+
 
   a {
     text-decoration: none;
   }
+
   .item-monhoc {
     align-items: center;
   }
 
-  .chuyen-nganh {
-    display: flex;
-    gap: 5px;
-    align-items: baseline;
-  }
+  
 
   .chuyen-nganh p {
 
@@ -41,24 +38,9 @@
     margin-bottom: 20px;
   }
 
-  .tim-kiem {
-    font-size: 14px;
-  }
+  
 
-  .tim-kiem input {
-    padding: 5px 9px;
-    margin-right: -5px;
-  }
-
-  .form {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-  }
-  .item-monhoc {
-    align-items: center;
-  }
+  
 
   .chuyen-nganh {
     display: flex;
@@ -130,23 +112,23 @@
 
   </div>
   <div class="form">
-  
-  <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-</div>
+
+    <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+  </div>
 
   <div class="form-tkb">
-    <div class="chuyen-nganh" >
+    <div class="chuyen-nganh">
       <div style="display: flex;">
-      <p >Chọn chuyên ngành:</p>
-      <select class="form-control" id="chuyennganh1">
-        <option class="a" id="Tất cả">Tất cả</option>
-        <?php
+        <p>Chọn chuyên ngành:</p>
+        <select class="form-control" id="chuyennganh1">
+          <option class="a" id="Tất cả">Tất cả</option>
+          <?php
 
-        foreach ($chuyennganh as $CN) {
-          echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-        }
-        ?>
-      </select>
+          foreach ($chuyennganh as $CN) {
+            echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+          }
+          ?>
+        </select>
       </div>
       <script>
         $(function() {
@@ -169,23 +151,23 @@
     <div class="tim-kiem">
       <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
-
     </div>
+
     <script>
-        $(function() {
-          $('#tntimkiem').trigger('click'); //This event will fire the change event. 
-          $('#tntimkiem').click(function() {
-            var data = $('#timkiem').val();
-            $.get("./index.php", {
-              controller: "daotao",
-              action: "timkiemmm",
-              key: data
-            }, function(data) {
-              $("#info").html(data);
-            })
-          });
+      $(function() {
+        $('#tntimkiem').trigger('click'); //This event will fire the change event. 
+        $('#tntimkiem').click(function() {
+          var data = $('#timkiem').val();
+          $.get("./index.php", {
+            controller: "daotao",
+            action: "timkiemmm",
+            key: data
+          }, function(data) {
+            $("#info").html(data);
+          })
         });
-      </script>
+      });
+    </script>
   </div>
   <div id="info">
     <table cellspacing="3" cellpadding="0" border="0px" width="100%">
@@ -359,7 +341,7 @@
       <div id="alert"></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="themmon" class="btn btn-success" >Xác nhận</button>
+        <button type="button" id="themmon" class="btn btn-success">Xác nhận</button>
       </div>
     </div>
     <script>
@@ -371,78 +353,59 @@
           var chuyennganh = $('#chuyennganh').val();
           var thu = $('#thu').val();
           var ca = $('#ca').val();
-          if(mamon == null || mamon == "")
-          {
+          if (mamon == null || mamon == "") {
             $("#alert").html('<strong class="text-danger">Mã môn học không được để trống</strong>');
             $("input[name='mamon']").focus();
             return;
-          }
-          else if (mamon.length < 5)
-          {
+          } else if (mamon.length < 5) {
             $("#alert").html('<strong class="text-danger">Mã môn học gồm 5 kí tự</strong>');
             $("input[name='mamon']").focus();
             return;
           }
-          <?php 
-                      $result = "";
-                      foreach ($mon as $sl)
-                      {
-                          
-                          
-                          ?>if(mamon == "<?=$sl['mamon']?>")
-                                    {
-                                  $("#alert").html('<strong class="text-danger">Mã môn đã tồn tại</strong>'); 
-                            $("input[name='mamon']").focus();
-                            return;
-                                    }<?php
-                      }
-                  ?>
-          else if(tenmon == null || tenmon == "")
-          {
-            $("#alert").html('<strong class="text-danger">Tên môn học không được để trống</strong>');
-            $("input[name='tenmon']").focus();
+          <?php
+          $result = "";
+          foreach ($mon as $sl) {
+
+
+          ?>if(mamon == "<?= $sl['mamon'] ?>") {
+            $("#alert").html('<strong class="text-danger">Mã môn đã tồn tại</strong>');
+            $("input[name='mamon']").focus();
             return;
           }
-          else if(tenmon.length < 5)
-          {
-            $("#alert").html('<strong class="text-danger">Tên môn học tối thiểu 6 kí tự</strong>');
-            $("input[name='tenmon']").focus();
-            return;
+        <?php
           }
-          else if(sotinchi == null || sotinchi == "")
-          {
-            $("#alert").html('<strong class="text-danger">Số tín chỉ không được để trống</strong>');
-            $("input[name='sotinchi']").focus();
-            return;
-          }
-          else if (isNaN(sotinchi))
-          {
-            $("#alert").html('<strong class="text-danger">Số tín chỉ là dạng số</strong>');
-            $("input[name='sotinchi']").focus();
-            return;
-          }
-          else if(chuyennganh == null || chuyennganh == "")
-          {
-            $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
-            $("select[name='chuyennganh']").focus();
-            return;
-          }
-          else if(thu == null || thu == "")
-          {
-            $("#alert").html('<strong class="text-danger">Thứ không được để trống</strong>');
-            $("select[name='thu']").focus();
-            return;
-          }
-          else if(ca == null || ca == "")
-          {
-            $("#alert").html('<strong class="text-danger">Ca không được để trống</strong>');
-            $("select[name='ca']").focus();
-            return;
-          }
-          else
-          {
-            $('#ThemMonHoc').modal('hide');
-            $.get("./index.php", {
+        ?>
+        else if (tenmon == null || tenmon == "") {
+          $("#alert").html('<strong class="text-danger">Tên môn học không được để trống</strong>');
+          $("input[name='tenmon']").focus();
+          return;
+        } else if (tenmon.length < 5) {
+          $("#alert").html('<strong class="text-danger">Tên môn học tối thiểu 6 kí tự</strong>');
+          $("input[name='tenmon']").focus();
+          return;
+        } else if (sotinchi == null || sotinchi == "") {
+          $("#alert").html('<strong class="text-danger">Số tín chỉ không được để trống</strong>');
+          $("input[name='sotinchi']").focus();
+          return;
+        } else if (isNaN(sotinchi)) {
+          $("#alert").html('<strong class="text-danger">Số tín chỉ là dạng số</strong>');
+          $("input[name='sotinchi']").focus();
+          return;
+        } else if (chuyennganh == null || chuyennganh == "") {
+          $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
+          $("select[name='chuyennganh']").focus();
+          return;
+        } else if (thu == null || thu == "") {
+          $("#alert").html('<strong class="text-danger">Thứ không được để trống</strong>');
+          $("select[name='thu']").focus();
+          return;
+        } else if (ca == null || ca == "") {
+          $("#alert").html('<strong class="text-danger">Ca không được để trống</strong>');
+          $("select[name='ca']").focus();
+          return;
+        } else {
+          $('#ThemMonHoc').modal('hide');
+          $.get("./index.php", {
             controller: "daotao",
             action: "themmon",
             mamon: mamon,
@@ -451,11 +414,11 @@
             chuyennganh: chuyennganh,
             thu: thu,
             ca: ca
-            }, function(data) {
-              $("#info").html(data);
-            })
-          }
-          
+          }, function(data) {
+            $("#info").html(data);
+          })
+        }
+
         });
       });
     </script>

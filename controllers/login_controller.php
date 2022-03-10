@@ -83,7 +83,9 @@ class login_controller {
             
             
         }
-        
+        $listStudent = $this->db->listStudentlogin();
+        $listGiangVien = $this->giangvien->listTeacherLogin();
+        $ADMIN = $this->db->getAllData("admin");
         require_once('./view/index.php');
     }
     function logout(){
