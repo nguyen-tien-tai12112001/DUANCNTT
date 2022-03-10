@@ -35,13 +35,13 @@ class admin_controller
         foreach($getmasv as $msv){
             $tongtin = $this->db->diemtrungbinh($msv['masinhvien']);
             if($tongtin != null){
-                if($tongtin[0]['diemtb'] > 8.0){
+                if($tongtin[0]['diemtb'] >= 8.0){
                     $diemgioi++;
                 }
-                elseif($tongtin[0]['diemtb']> 6.5 && $tongtin[0]['diemtb']< 8.0){
+                elseif($tongtin[0]['diemtb']>= 6.5 && $tongtin[0]['diemtb']< 8.0){
                     $diemkha++;
                 }
-                elseif($tongtin[0]['diemtb']> 5.0 && $tongtin[0]['diemtb']< 6.5){
+                elseif($tongtin[0]['diemtb']>= 5.0 && $tongtin[0]['diemtb']<= 6.5){
                     $diemtb++;
                 }
             }
@@ -90,13 +90,13 @@ class admin_controller
         foreach($getmasv as $msv){
             $tongtin = $this->db->diemtrungbinh($msv['masinhvien']);
             if($tongtin != null){
-                if($tongtin[0]['diemtb'] > 8.0){
+                if($tongtin[0]['diemtb'] >= 8.0){
                     $diemgioi++;
                 }
-                elseif($tongtin[0]['diemtb']> 6.5 && $tongtin[0]['diemtb']< 8.0){
+                elseif($tongtin[0]['diemtb']>= 6.5 && $tongtin[0]['diemtb']< 8.0){
                     $diemkha++;
                 }
-                elseif($tongtin[0]['diemtb']> 5.0 && $tongtin[0]['diemtb']< 6.5){
+                elseif($tongtin[0]['diemtb']>= 5.0 && $tongtin[0]['diemtb']< 6.5){
                     $diemtb++;
                 }
             }
