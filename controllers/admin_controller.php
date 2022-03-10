@@ -4,8 +4,7 @@ use models\DatabaseConnection;
 class admin_controller
 {
     public function run()
-    {
-       
+    { 
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
         $this->db = new admin($dbc);

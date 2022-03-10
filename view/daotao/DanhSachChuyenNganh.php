@@ -4,8 +4,6 @@
   .modal-td {
     padding: 10px;
   }
-
- 
   a {
     text-decoration: none;
   }

@@ -87,14 +87,7 @@
             }
             return $data;
         }
-        // public function diemtrungbinh(){
-        //     $sql = "sELECT count(svdm.masinhvien) as hocsinhgioi,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<8 and svdm.diemtongket>6.5) as hocsinhkha,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` 
-        //     svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<6.5) 
-        //     as hocsinhtb FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket>8";
-        //     $data = $this->executeResult($sql);    
-        //     return $data;
-            
-        // }
+        
         // / Sinh vien
         public function getinfosinhvien($msv){
             $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";
@@ -210,24 +203,7 @@
             }
             return $data;;
         }
-        ///tkb
-        public function tkb(){
-            $sql=" SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon
-            ";
-            return $this->execute($sql);
-        }
-        public function tkb_loccn($machuyennganh){
-            $sql="SELECT giangvienmonhoc.magiangvien as magiangvien,monhoc.mamon as mamon,monhoc.tenmon as tenmon,giangvien.hovaten as hovaten,giangvienmonhoc.lop as malop,giangvien.chuyennganh as chuyennganh,monhoc.sotinchi as sotinchi,monhoc.thu as thu,monhoc.ca as ca FROM `giangvienmonhoc` inner join giangvien on giangvienmonhoc.magiangvien = giangvien.magiangvien inner join monhoc on monhoc.mamon = giangvienmonhoc.mamon where monhoc.chuyennganh='$machuyennganh'";
-            return $this->execute($sql);
-        }
-        public function tkb_timkiem($key){
-            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ";
-            return $this->execute($sql);
-        }
-        public function tkb_timkiemtheocn($key,$machuyennganh){
-            $sql=" SELECT DISTINCT(monhoc.mamon), monhoc.tenmon, monhoc.sotinchi, monhoc.thu, monhoc.ca, giangvien.hovaten FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon=gv.mamon INNER JOIN giangvien on gv.magiangvien= giangvien.magiangvien where ( monhoc.tenmon like '%$key%' or monhoc.mamon like '%$key%' ) and monhoc.chuyennganh='$machuyennganh' ";
-            return $this->execute($sql);
-        }
+      
 
         public function countsSV(){
             $sql = 'SELECT count(*) as sl  from sinhvien';
@@ -356,64 +332,7 @@
         }
 
 
-        
-        
-        public function themvaolichdkhoc($mm,$nbd,$nkt){
-            $sql="INSERT INTO `lickdkhoc`(`mamon`, `ngaybatdau`, `ngayketthuc`) 
-            VALUES ('$mm','$nbd','$nkt')";
-            return $this->execute($sql);
-        }
-        public function getdatalichdk($tg){
-            $sql = "SELECT * FROM `lickdkhoc` INNER JOIN monhoc on lickdkhoc.mamon=monhoc.mamon INNER JOIN giangvienmonhoc on giangvienmonhoc.mamon=lickdkhoc.mamon WHERE lickdkhoc.ngaybatdau<'$tg' AND lickdkhoc.ngayketthuc>'$tg'";
-            return $this->execute($sql);
-        }
-        public function giodk($tg){
-            $sql = "SELECT * FROM `lickdkhoc` WHERE lickdkhoc.ngaybatdau<'$tg' AND lickdkhoc.ngayketthuc>'$tg' ORDER BY ngaybatdau ASC LIMIT 1";
-            $this->execute($sql);
-            if($this->dem()!=0){
-                $data = mysqli_fetch_array($this->result);
-            }
-            else{
-                $data = [];
-            }
-            return $data;
-        }
-        public function giocbdk($tg){
-            $sql = "SELECT * FROM `lickdkhoc` WHERE lickdkhoc.ngaybatdau>'$tg' ORDER BY ngaybatdau ASC LIMIT 1";
-            $this->execute($sql);
-            if($this->dem()!=0){
-                $data = mysqli_fetch_array($this->result);
-            }
-            else{
-                $data = [];
-            }
-            return $data;
-        }
-        public function getdatamondk($msv){
-            $sql = "SELECT * FROM `gv-sv-lop` as gv INNER JOIN monhoc on gv.mamon= monhoc.mamon WHERE gv.masinhvien='$msv'";
-            return $this->execute($sql);
-        }
-        public function getmamondk($msv){
-            $sql = "SELECT * FROM `gv-sv-lop` where masinhvien ='$msv' and trangthai=true";
-            return $this->execute($sql);
-        }
-        public function dangkyhoc($mm,$mgv,$mlop,$msv){
-            $sql = "INSERT INTO `gv-sv-lop`( `magiangvien`, `mamon`, `malop`, `masinhvien`) VALUES ('$mgv','$mm','$mlop','$msv')";
-            $this->execute($sql);
-            $sql1="INSERT INTO `sinhvien-diemmon`( `masinhvien`, `mamon`) VALUES ('$msv','$mm')";
-            return $this->execute($sql1);
-        }
-        public function huydangkyhoc($mm,$mgv,$mlop,$msv){
-            $sql = "DELETE FROM `gv-sv-lop` WHERE masinhvien='$msv'and magiangvien='$mgv'and malop='$mlop'and mamon='$mm'";
-            $this->execute($sql);
-            $sql1 = "DELETE FROM `sinhvien-diemmon` WHERE masinhvien='$msv'and mamon='$mm'";
-            return $this->execute($sql1);
-        }
-
-        public function thongtinlich($msv){
-            $sql = "SELECT * FROM monhoc INNER JOIN `gv-sv-lop` as gv on monhoc.mamon =gv.mamon WHERE gv.masinhvien='$msv' and cathi !=''";
-            $this->execute($sql);
-            return $this->execute($sql);
-        }    
+    
+       
        
     }

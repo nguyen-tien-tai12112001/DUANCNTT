@@ -85,25 +85,7 @@ else
             id="ctl00"
             class=""
           >
-            <!-- <input
-              type="hidden"
-              name="taikhoan"
-              id="__VIEWSTATE"
-              value="Rd81TgcKntXsEQ9ElI0cDao0ji2/prsWSPXPHPYtspgQ9kaGK90xVkMnIsUHlQEIsDkSA+KCKcOPlQ8FMcyb4YRGQBTbaGyCu9JA0DRNwxQroTGNYL2FN7YQ0NYKzdAdBPYi5+sf08PSjYDhKG5lRtQCdEVMig0n2JMETeJBzYU="
-            />
-
-            <input
-              type="hidden"
-              name="__VIEWSTATEGENERATOR"
-              id="__VIEWSTATEGENERATOR"
-              value="CA0B0334"
-            />
-            <input
-              type="hidden"
-              name="__EVENTVALIDATION"
-              id="__EVENTVALIDATION"
-              value="r8cq7ZurwTyoCjZjrmRyT6BS8Sjn6Wpf93zIy1K4q5grmjKc2qeXZiTVvEIlJGEv9Xg29EbDtJgC3TZiIZ7pVfWICG4+2Da8G9MJXYXzQ5z6cMebwLuBU8owhnXNPQhUEg94o1hbn8GQ2Qstixjk9cOR6znDG+C5YrHNwoN8tWRXL4RN+N2LuLry0mu67FEr"
-            /> -->
+          
             <span class="login100-form-logo">
               <img
                 id="profile-img"
