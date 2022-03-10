@@ -205,7 +205,6 @@
             <tbody>
               <?php $i = 0;
               foreach ($data as $info) {
-                $i++;
                 $checkmm = 1;
                 foreach ($data3 as $info3) {
                   if ($info['mamon'] == $info3['mamon']) {
