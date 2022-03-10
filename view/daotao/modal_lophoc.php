@@ -12,20 +12,20 @@
         <tbody id="" class="table">
           <tr>
             <td class="modal-td" width="30%">Mã Lớp:</td>
-            <td class="modal-td"><input type="text" class="form-control" id="malop_kt" name="malop_kt" value="<?= $info['malop'] ?>" readonly></td>
+            <td class="modal-td"><input autocomplete="off" type="text" class="form-control" id="malop_kt" name="malop_kt" value="<?= $info['malop'] ?>" readonly></td>
           </tr>
           <tr>
             <td class="modal-td" width="30%">Tên Lớp</td>
-            <td class="modal-td"><input type="text" class="form-control" id="tenlop_kt" name="tenlop_kt" value="<?= $info['tenlop'] ?>"></td>
+            <td class="modal-td"><input autocomplete="off" type="text" class="form-control" id="tenlop_kt" name="tenlop_kt" value="<?= $info['tenlop'] ?>"></td>
           </tr>
 
           <tr>
             <td class="modal-td" width="30%">Chuyên ngành:</td>
             <td class="modal-td">
               <select id="chuyennganh_kt" name="chuyennganh_kt" class="form-control">
-              
-                <?php foreach ($chuyennganh as $info1) { ?>
-                  <option value="<?= $info1['machuyennganh'] ?>" <?php if($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected';?>><?= $info1['tenchuyennganh'] ?></option>
+
+                <?php foreach ($data_cn as $info1) { ?>
+                  <option value="<?= $info1['machuyennganh'] ?>" <?php if ($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected'; ?>><?= $info1['tenchuyennganh'] ?></option>
                 <?php } ?>
               </select>
             </td>
@@ -35,7 +35,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-      <button type="button" id="capnhatmonhoc" class="btn btn-success" >Cập Nhật</button>
+      <button type="button" id="capnhatmonhoc" class="btn btn-success">Cập Nhật</button>
     </div>
   </div>
 
@@ -50,18 +50,18 @@
       var chuyennganh = $("select[name='chuyennganh_kt']").val();
       // alert(tenlop_kt)
       $('#SuaMonHoc').modal('hide');
-          $.get("./index.php", {
-          controller: "daotao",
-          action: "capnhatlop",
-          malop: malop_kt,
-          tenlop: tenlop_kt,
-          chuyennganh: chuyennganh
-        }, function(data) {
-          $("#info").html(data);
-         location.reload();
-        })
-      
-      
+      $.get("./index.php", {
+        controller: "daotao",
+        action: "capnhatlop",
+        malop: malop_kt,
+        tenlop: tenlop_kt,
+        chuyennganh: chuyennganh
+      }, function(data) {
+        $("#info").html(data);
+        location.reload();
+      })
+
+
     });
   });
 </script>

@@ -12,24 +12,24 @@
         <tbody id="" class="table">
           <tr>
             <td class="modal-td" width="30%">Mã Môn:</td>
-            <td class="modal-td"><input type="text" class="form-control" id="mamon_kt" name="mamon_kt" value="<?= $info['mamon'] ?>" readonly></td>
+            <td class="modal-td"><input autocomplete="off" type="text" class="form-control" id="mamon_kt" name="mamon_kt" value="<?= $info['mamon'] ?>" readonly></td>
           </tr>
           <tr>
             <td class="modal-td" width="30%">Tên Môn</td>
-            <td class="modal-td"><input type="text" class="form-control" id="tenmon_kt" name="tenmon_kt" value="<?= $info['tenmon'] ?>"></td>
+            <td class="modal-td"><input autocomplete="off" type="text" class="form-control" id="tenmon_kt" name="tenmon_kt" value="<?= $info['tenmon'] ?>"></td>
           </tr>
           <tr>
             <td class="modal-td" width="30%">Số TC:</td>
-            <td class="modal-td"><input type="text" class="form-control" id="sotinchi_kt" name="sotinchi_kt" value="<?= $info['sotinchi'] ?>"></td>
+            <td class="modal-td"><input autocomplete="off" type="text" class="form-control" id="sotinchi_kt" name="sotinchi_kt" value="<?= $info['sotinchi'] ?>"></td>
           </tr>
 
           <tr>
             <td class="modal-td" width="30%">Chuyên ngành:</td>
             <td class="modal-td">
               <select id="chuyennganh_kt" name="chuyennganh_kt" class="form-control">
-              
+
                 <?php foreach ($chuyennganh as $info1) { ?>
-                  <option value="<?= $info1['machuyennganh'] ?>" <?php if($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected';?>><?= $info1['tenchuyennganh'] ?></option>
+                  <option value="<?= $info1['machuyennganh'] ?>" <?php if ($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected'; ?>><?= $info1['tenchuyennganh'] ?></option>
                 <?php } ?>
               </select>
             </td>
@@ -77,21 +77,21 @@
       var chuyennganh = $("select[name='chuyennganh_kt']").val();
       var thu = $("select[name='thu_kt']").val();
       var ca = $("select[name='ca_kt']").val();
-          $.get("./index.php", {
-          controller: "daotao",
-          action: "capnhatmonhocdaotao",
-          mamon: mamon,
-          tenmon: tenmon,
-          sotinchi: sotinchi,
-          chuyennganh: chuyennganh,
-          thu:thu,
-          ca:ca
-        }, function(data) {
-          $("#info").html(data);
-          alert("Cập nhật thành công");
-        })
-      
-      
+      $.get("./index.php", {
+        controller: "daotao",
+        action: "capnhatmonhocdaotao",
+        mamon: mamon,
+        tenmon: tenmon,
+        sotinchi: sotinchi,
+        chuyennganh: chuyennganh,
+        thu: thu,
+        ca: ca
+      }, function(data) {
+        $("#info").html(data);
+        alert("Cập nhật thành công");
+      })
+
+
     });
   });
 </script>

@@ -19,7 +19,7 @@
     align-items: center;
   }
 
-  
+
 
   .chuyen-nganh p {
 
@@ -38,9 +38,9 @@
     margin-bottom: 20px;
   }
 
-  
 
-  
+
+
 
   .chuyen-nganh {
     display: flex;
@@ -149,7 +149,7 @@
     </div>
 
     <div class="tim-kiem">
-      <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
+      <input autocomplete="off" id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
     </div>
 
@@ -292,15 +292,15 @@
           <tbody class="table">
             <tr>
               <td class="modal-td" width="30%">Mã Môn:</td>
-              <td class="modal-td"><input id="mamon" name="mamon" type="text" class="form-control"></td>
+              <td class="modal-td"><input autocomplete="off" id="mamon" name="mamon" type="text" class="form-control"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Tên Môn</td>
-              <td class="modal-td"><input id="tenmon" name="tenmon" type="text" class="form-control"></td>
+              <td class="modal-td"><input autocomplete="off" id="tenmon" name="tenmon" type="text" class="form-control"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Số TC:</td>
-              <td class="modal-td"><input id="sotinchi" name="sotinchi" type="text" class="form-control"></td>
+              <td class="modal-td"><input autocomplete="off" id="sotinchi" name="sotinchi" type="text" class="form-control"></td>
             </tr>
 
             <tr>
@@ -375,7 +375,7 @@
         <?php
           }
         ?>
-        else if (tenmon == null || tenmon == "") {
+        if (tenmon == null || tenmon == "") {
           $("#alert").html('<strong class="text-danger">Tên môn học không được để trống</strong>');
           $("input[name='tenmon']").focus();
           return;

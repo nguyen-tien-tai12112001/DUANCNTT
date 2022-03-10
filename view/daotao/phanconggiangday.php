@@ -129,7 +129,7 @@
       </script>
     </div>
     <div class="tim-kiem">
-      <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã môn,tên môn">
+      <input autocomplete="off" type="text" id="timkiem" name="timkiem" placeholder="Nhập mã môn,tên môn">
       <button class="btnTimKiem">Tìm kiếm</button>
     </div>
   </div>
@@ -179,7 +179,7 @@
                           <td class="mamon<?= $stt ?>" id="<?= $infomonhoc['mamon'] ?>" name="mamon"><?= $infomonhoc['mamon'] ?></td>
                           <td class="tenmon<?= $stt ?>" id="<?= $infomonhoc['tenmon'] ?>" name="tenmon"><?= $infomonhoc['tenmon'] ?></td>
                           <td>
-                            <select class="text-center" class="form-control" style="width: 70%" id="magiangvien<?= $stt ?>">
+                            <select class="form-control" style="width: 80%" id="magiangvien<?= $stt ?>">
                               <option value="<?= $infomonhoc['magiangvien'] ?>"><?= $infomonhoc['hovaten'] ?></option>
                               <?php
                               foreach ($listGiangVien as $info1) {
@@ -191,7 +191,7 @@
                             </select>
                           </td>
                           <td>
-                            <select class="text-center" class="form-control" style="width: 60%" id="malop<?= $stt ?>">
+                            <select class="form-control" style="width: 80%" id="malop<?= $stt ?>">
                               <option value="<?= $infomonhoc['malop'] ?>"><?= $infomonhoc['malop'] ?></option>
                               <?php
                               foreach ($listLop as $info2) {
@@ -211,7 +211,7 @@
                           <td class="mamon<?= $stt ?>" id="<?= $info['mamon'] ?>" name="mamon"><?= $info['mamon'] ?></td>
                           <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon"><?= $info['tenmon'] ?></td>
                           <td>
-                            <select class="form-control" style="width: 50%" id="magiangvien<?= $stt ?>">
+                            <select class="form-control" style="width: 80%" id="magiangvien<?= $stt ?>">
                               <option value="">Hiện tại chưa có giáo viên nào</option>
                               <?php
                               foreach ($listGiangVien as $info1) {
@@ -223,7 +223,7 @@
                             </select>
                           </td>
                           <td>
-                            <select class="form-control" style="width: 50%" id="malop<?= $stt ?>">
+                            <select class="form-control" style="width: 80%" id="malop<?= $stt ?>">
                               <option value="">Không có lớp học nào</option>
                               <?php
                               foreach ($listLop as $info2) {

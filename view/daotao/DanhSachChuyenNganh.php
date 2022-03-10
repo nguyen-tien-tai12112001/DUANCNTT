@@ -1,9 +1,9 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <style>
- 
   .modal-td {
     padding: 10px;
   }
+
   a {
     text-decoration: none;
   }
@@ -64,9 +64,11 @@
     overflow: hidden;
     transition: color 0.4s ease-in-out;
   }
+
   td {
     text-align: center;
   }
+
   .btnTimKiem::before {
     content: '';
     z-index: -1;
@@ -104,20 +106,20 @@
 
   </div>
   <div class="form-tkb">
-    <div class="chuyen-nganh" >
-      <div style="display: flex;">
-      <p >Chọn chuyên ngành:</p>
-      <select class="form-control" id="chuyennganh1">
-        <option class="a" id="Tất cả">Tất cả</option>
-        <?php
+    <div class="chuyen-nganh">
+      <!-- <div style="display: flex;"> -->
+      <!-- <p>Chọn chuyên ngành:</p>
+        <select class="form-control" id="chuyennganh1">
+          <option class="a" id="Tất cả">Tất cả</option>
+          <?php
 
-        foreach ($chuyennganh as $CN) {
-          echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-        }
-        ?>
-      </select>
+          foreach ($chuyennganh as $CN) {
+            echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+          }
+          ?>
+        </select>
       </div>
-     
+
       <script>
         $(function() {
           $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
@@ -133,11 +135,11 @@
             })
           });
         });
-      </script>
+      </script> -->
     </div>
 
     <div class="tim-kiem">
-      <input id="timkiem" type="text" placeholder="Nhập mã chuyên ngành,tên chuyên ngành">
+      <input autocomplete="off" id="timkiem" type="text" autocomplete="off" placeholder="Nhập mã chuyên ngành,tên chuyên ngành">
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
 
     </div>
@@ -170,12 +172,12 @@
                         ">
                 <tbody>
                   <tr>
-                    <th  class="text-center">STT</th>
-                    <th  class="text-center" style="white-space: nowrap">
+                    <th class="text-center">STT</th>
+                    <th class="text-center" style="white-space: nowrap">
                       Mã chuyên ngành
                     </th>
-                    <th  class="text-center">Tên chuyên ngành</th>
-                    <th  class="text-center"></th>
+                    <th class="text-center">Tên chuyên ngành</th>
+                    <th class="text-center"></th>
                   <tr>
                     <?php $stt = 0;
                     foreach ($chuyennganh as $info) {
@@ -243,11 +245,11 @@
           <tbody class="table">
             <tr>
               <td class="modal-td" width="30%">Mã chuyên ngành:</td>
-              <td class="modal-td"><input id="machuyennganh" type="text" class="form-control"></td>
+              <td class="modal-td"><input autocomplete="off" id="machuyennganh" type="text" class="form-control"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Tên chuyên ngành</td>
-              <td class="modal-td"><input id="tenchuyennganh" type="text" class="form-control"></td>
+              <td class="modal-td"><input autocomplete="off" id="tenchuyennganh" type="text" class="form-control"></td>
             </tr>
 
           </tbody>
@@ -266,39 +268,39 @@
           var machuyennganh = $('#machuyennganh').val();
           var tenchuyennganh = $('#tenchuyennganh').val();
           if (machuyennganh == null || machuyennganh == "") {
-            $("#alert").html('<strong class="text-danger">Mã chuyên ngành không được để trống</strong>');
+            $("#alert").html('<strong class="text-danger" style="margin-left:10px">Mã chuyên ngành không được để trống</strong>');
             $("input[name='machuyennganh']").focus();
             return;
-          }  <?php 
-                      $result = "";
-                      foreach ($chuyennganh as $sl)
-                      {
-                          
-                          
-                          ?>if(machuyennganh == "<?=$sl['machuyennganh']?>")
-                                    {
-                                  $("#alert").html('<strong class="text-danger">Mã chuyên ngành đã tồn tại</strong>'); 
-                            $("input[name='machuyennganh']").focus();
-                            return;
-                                    }<?php
-                      }
-                  ?>
-           else if (tenchuyennganh == null || tenchuyennganh == "") {
-            $("#alert").html('<strong class="text-danger">Tên chuyên ngành không được để trống</strong>');
-            $("input[name='tenchuyennganh']").focus();
-            return;
-          } else {
-            $('#ThemMonHoc').modal('hide');
-            $.get("./index.php", {
-              controller: "daotao",
-              action: "themchuyennganh",
-              machuyennganh: machuyennganh,
-              tenchuyennganh: tenchuyennganh
-            }, function(data) {
-              $("#bangdiem1").html(data);
-              location.reload();
-            })
           }
+          <?php
+          $result = "";
+          foreach ($chuyennganh as $sl) {
+
+
+          ?>if(machuyennganh == "<?= $sl['machuyennganh'] ?>") {
+            $("#alert").html('<strong class="text-danger" style="margin-left:10px">Mã chuyên ngành đã tồn tại</strong>');
+            $("input[name='machuyennganh']").focus();
+            return;
+          }
+        <?php
+          }
+        ?>
+        if (tenchuyennganh == null || tenchuyennganh == "") {
+          $("#alert").html('<strong class="text-danger" style="margin-left:10px">Tên chuyên ngành không được để trống</strong>');
+          $("input[name='tenchuyennganh']").focus();
+          return;
+        } else {
+          $('#ThemMonHoc').modal('hide');
+          $.get("./index.php", {
+            controller: "daotao",
+            action: "themchuyennganh",
+            machuyennganh: machuyennganh,
+            tenchuyennganh: tenchuyennganh
+          }, function(data) {
+            $("#bangdiem1").html(data);
+            location.reload();
+          })
+        }
 
         });
       });
