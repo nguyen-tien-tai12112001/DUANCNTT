@@ -41,6 +41,10 @@
             $sql = "select * from giangvien where role_id=2";
             return $this->execute($sql);
         }
+        public function getAllData_gv_tt(){
+            $sql = "select * from giangvien where role_id=2 and trangthai=1";
+            return $this->execute($sql);
+        }
         public function timkiemmonhocmamon($timkiem){
             $sql = "select * from monhoc where (monhoc.mamon like '%$timkiem%' or monhoc.tenmon like '%$timkiem%') ";
            
