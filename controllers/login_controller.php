@@ -1,6 +1,7 @@
 <?php
 require_once("./models/sinhvien.php");
 require_once("./models/giangvien.php");
+require_once("./models/admin.php");
 use models\DatabaseConnection;
 class login_controller {
     public function run(){
@@ -8,6 +9,7 @@ class login_controller {
         $dbc = $dbh->getConnection();
         $this->giangvien = new giangvien($dbc);
         $this->db = new sinhvien($dbc);
+        $this->dbadmin = new admin($dbc);
         $action= filter_input(INPUT_GET,"action");
         if(method_exists($this,$action))
         {
@@ -25,11 +27,11 @@ class login_controller {
             $check = substr($tk, 0, 1);
             $check1 = substr($tk, 0, 2);
             if($check1 == "AD"){
-                $reuslt = $this->db->login($tk,$mk);
+                $user = $this->dbadmin->login($tk,$mk);
                 
-                if($reuslt)
+                if($user)
                 {
-                    $info=$this->db->getinfoadmin($tk);
+                    $info=$this->dbadmin->getinfoadmin($tk);
                     $_SESSION['id']=$info['id'];
                     $_SESSION['name']=$info['hovaten'];
                     $_SESSION['admin']=$info['maadmin'];
@@ -38,7 +40,6 @@ class login_controller {
                     $_SESSION['start'] = time(); 
                     $_SESSION['expire'] = $_SESSION['start'] + (60*60);
                     $_SESSION['role_id'] = $info['role_id']; 
-                    header('location:index.php?controller=admin');;
                 }
             }
             else if($check == "A")

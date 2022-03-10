@@ -100,7 +100,8 @@ class admin_controller
                     $diemtb++;
                 }
             }
-        // $diemtrungbinh= $this->db->diemtrungbinh();
+            
+        }
         require_once("./view/admin/dashboardadmin.php");
     }
     function themsinhvien()
