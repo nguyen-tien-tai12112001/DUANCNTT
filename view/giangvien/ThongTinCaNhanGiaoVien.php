@@ -92,14 +92,7 @@ if ($_SESSION['role_id'] == "1") {
             <td width="30%">Ngày sinh:</td>
             <td><?= $data['ngaysinh'] ?></td>
           </tr>
-          <!-- <tr>
-                  <td width="30%">Bộ môn:</td>
-                  <td>TT32h4</td>
-                </tr>
-                <tr>
-                  <td width="30%">Chức vụ:</td>
-                  <td>Giáo viên thục tập</td>
-                </tr> -->
+         
           <tr>
             <td>Điện thoại:</td>
             <td><?= $data['dienthoai'] ?></td>

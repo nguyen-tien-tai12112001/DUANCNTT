@@ -37,6 +37,7 @@
     .container_timkiem {
         display: flex;
         justify-content: space-between;
+        
     }
 
     .right_timkiem {
@@ -50,9 +51,9 @@
     <div class="entry">
         <div class="container_timkiem">
             <div style="display: flex;">
-                <span>Chọn môn học:</span>
-                <select class="form-control" id="mamon" style="width: 13rem;">
-                    <script>
+                <p style="width:200px;font-size:18px;">Chọn môn học:</p>
+                <select class="form-control"  id="mamon">
+                <script>
                         $(function() {
                             $('#mamon').trigger('change'); //This event will fire the change event. 
                             $('#mamon').change(function() {
@@ -67,46 +68,23 @@
                             });
                         });
                     </script>
-                    <option class="a" id="Tất cả">Tất cả</option>
+                     <option class="a" id="Tất cả">Tất cả</option>
                     <?php foreach ($mon as $monhoc) { ?>
                         <option class="a"><?php echo $monhoc['tenmon']; ?></option>
                     <?php } ?>
+                    
                 </select>
             </div>
+            
 
-            <div style="display: flex;">
-                <td>Chọn học kỳ:</td>
-                <td>
-                    <select class="form-control"  style="width: 13rem;">
-                        <option>Kỳ 1 nhóm 1</option>
-                        <option>Kỳ 2 nhóm 2</option>
-                    </select>
-                </td>
-            </div>
-
-            <div style="position: relative">
-                <i style="
-                  position: absolute;
-                  left: 4px;
-                  bottom: 6px;
-                  font-size: 15px;
-                " class="fas fa-search"></i>
-                <input class="form-control"  id="timkiem_kt" name="timkiem" style="padding-left: 20px;
-                                height: 25px;
-                    " type="text" placeholder="Tìm kiếm">
-                <button id="bttimkiem" style="
-                  position: absolute;
-                  right: 0px;
-                  height: 25px;
-                  bottom: 0px;
-                  top: 0px;
-                  padding: 0 8px 0 8px;
-                ">
+            <div class="right_timkiem">
+                <input id="timkiem_kt" style="padding-left: 20px; height: 35px;" type="text" placeholder="Nhập MSV hoặc tên" />
+                <button id="bttimkiem" style=" position: absolute;right: 0px; height: 35px;bottom: 0px;top: 0px;padding: 0 10px 0 10px;">
                     Tìm
                 </button>
             </div>
-        </div>
 
+        </div>
 
         <script>
             $(function() {
@@ -125,10 +103,14 @@
         </script>
 
 
-        <div style="margin-top: 20px; align-items: flex-end;" class="container_timkiem">
-            <div>
+        
+       
             
-                <select class="form-control"  id="sapxep">
+        
+        <div style="margin-top: 10px;" class="container_timkiem">
+                <div style="display: flex;">
+                    <p style="width:250px;font-size:18px;">Sắp xếp theo điểm:</p>
+                    <select class="form-control"  id="sapxep">
                     <script>
                         $(function() {
                             $('#sapxep').trigger('change'); //This event will fire the change event. 
@@ -144,18 +126,17 @@
                             });
                         });
                     </script>
-                    <option>Thấp >> cao</option>
-                    <option>Cao >> thấp</option>
+                    <option>Thấp -> cao</option>
+                    <option>Cao -> thấp</option>
                 </select>
+                </div>
+                
             </div>
-
-            <button>Xuất file</button>
-        </div>
 
 
     </div>
     <div id="bangdiem">
-        <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+        <table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
@@ -164,38 +145,38 @@
 
             <tr style="background-color: #e4e8e9;">
                 <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Họ tên
-                </th>
-                <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;width:140px;
+                padding: 5px;">
                     Mã sinh viên
                 </th>
                 <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;width:16%;
+                padding: 5px;">
+                    Họ và tên
+                </th>
+                <th style="border: 1px solid #dddddd;
+                text-align: center;width:200px;
+                padding: 5px;">
                     Môn học
                 </th>
                 <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Điểm quá trình
+                text-align: center;width:110px;
+                padding: 5px;">
+                    Điểm QT
                 </th>
                 <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                    Điểm cuối kỳ
+                text-align: center;width:110px;
+                padding: 5px;">
+                    Điểm CK
                 </th>
                 <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;width:20%;
+                padding: 5px;">
                     Điểm tổng kết
                 </th>
                 <th style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
+                text-align: center;
+                padding: 5px;">
 
                 </th>
             </tr>
@@ -248,15 +229,15 @@
                 foreach ($svl as $info) {
                     $stt++; ?>
                     <tr>
-                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten" style="border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;">
-                            <?= $info['hovaten'] ?>
-                        </td>
                         <td class="masinhvien<?= $stt ?>" id="<?= $info['masinhvien'] ?>" name="masinhvien" style="border: 1px solid #dddddd;
                 text-align: left;
                 padding: 8px;">
                             <?= $info['masinhvien'] ?>
+                        </td>
+                        <td class="hovaten<?= $stt ?>" id="<?= $info['hovaten'] ?>" name="hovaten" style="border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;">
+                            <?= $info['hovaten'] ?>
                         </td>
                         <td class="tenmon<?= $stt ?>" id="<?= $info['tenmon'] ?>" name="tenmon" style="border: 1px solid #dddddd;
                 text-align: left;
@@ -284,7 +265,7 @@
                     </tr>
             <?php }
             } else {
-                echo "<td >Dữ liệu Rỗng </td> ";
+                echo "<td >Dữ liệu rỗng </td> ";
             } ?>
     </div>
 
