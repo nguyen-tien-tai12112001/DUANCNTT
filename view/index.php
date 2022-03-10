@@ -179,7 +179,10 @@ else
 			let taikhoan = $("input[name='taikhoan']").val();
 			
 			let password = $("input[name='password']").val();
-			
+			let check = taikhoan[0];
+      let check1 = taikhoan[0]+taikhoan[1];
+      let count = 0;
+      console.log(check1);
 			if(taikhoan == null || taikhoan == "")
 			{
 				$("#alert").html('<strong class="text-danger">Mã đăng nhập không được để trống</strong>'); 
@@ -199,10 +202,29 @@ else
 				$("#alert").html('<strong class="text-danger">Mật khẩu tối thiểu là 6 kí tự</strong>'); 
 				$("input[name='password']").focus();
 				return;
-			}	
-      
-		
-			else
+			}
+      else if(check1 == 'AD')
+      {
+          <?php 
+            
+            foreach ($ADMIN as $sl)
+            {
+                
+                
+                ?>if((taikhoan == "<?=$sl['maadmin']?>" && password == "<?=$sl['password']?>"))
+                          {
+                            
+                            count++;
+                          }<?php
+            }
+        ?>
+        if(count ==0)
+        {
+                $("#alert").html('<strong class="text-danger">Mật khẩu hoặc tài khoản không hợp lệ</strong>'); 
+                      $("input[name='password']").focus();
+                return;
+        }
+        else
 			{
 				const url = "index.php?controller=login&action=login";
 			    		$.ajax({		        
@@ -233,7 +255,122 @@ else
 				        },
 				   		});		   		  
 				
+			}}	
+      else if(check == 'A')
+      {
+          <?php 
+            
+            foreach ($listStudent as $sl)
+            {
+                
+                
+                ?>if((taikhoan == "<?=$sl['masinhvien']?>" && password == "<?=$sl['password']?>"))
+                          {
+                            
+                            count++;
+                          }<?php
+            }
+        ?>
+        if(count ==0)
+        {
+                $("#alert").html('<strong class="text-danger">Mật khẩu hoặc tài khoản không hợp lệ</strong>'); 
+                      $("input[name='password']").focus();
+                return;
+        }
+        else
+			{
+				const url = "index.php?controller=login&action=login";
+			    		$.ajax({		        
+    				        url   ,
+    				        method: "POST",
+    				        data: {
+                                taikhoan : taikhoan,
+                                password : password
+                                
+                            },
+                            
+                            success: function (data) {
+                            <?php
+                               
+                               if(!isset($_SESSION['msv']) || isset($_SESSION['mgv']) )
+                              {
+                                
+                                echo 'window.location="index.php?controller=sinhvien";';
+                              }
+                              else
+                              {?>
+                                $("#alert").html('<strong class="text-danger">Tài khoản hoặc mật khẩu không chính xác</strong>'); 
+                                $("input[name='password']").focus();
+                                
+                              <?php }
+                            ?>
+
+				        },
+				   		});		   		  
+				
+			}}
+      else if(check == 'G' )
+      {
+          <?php 
+            
+            foreach ($listGiangVien as $sl)
+            {
+                
+                
+                ?>if((taikhoan == "<?=$sl['magiangvien']?>" && password == "<?=$sl['password']?>"))
+                          {
+                            
+                            count++;
+                          }<?php
+            }
+        ?>
+        if(count ==0)
+        {
+                $("#alert").html('<strong class="text-danger">Mật khẩu hoặc tài khoản không hợp lệ</strong>'); 
+                      $("input[name='password']").focus();
+                return;
+        }
+        else
+			{
+				const url = "index.php?controller=login&action=login";
+			    		$.ajax({		        
+    				        url   ,
+    				        method: "POST",
+    				        data: {
+                                taikhoan : taikhoan,
+                                password : password
+                                
+                            },
+                            
+                            success: function (data) {
+                            <?php
+                               
+                               if(!isset($_SESSION['msv']) || isset($_SESSION['mgv']) )
+                              {
+                                
+                                echo 'window.location="index.php?controller=sinhvien";';
+                              }
+                              else
+                              {?>
+                                $("#alert").html('<strong class="text-danger">Mật khẩu hoặc tài khoản không hợp lệ</strong>'); 
+                      $("input[name='password']").focus();
+                return;
+                                
+                              <?php }
+                            ?>
+
+				        },
+				   		});		   		  
+				
 			}
+      }
+      else
+      {
+        $("#alert").html('<strong class="text-danger">Mật khẩu hoặc tài khoản không hợp lệ</strong>'); 
+                      $("input[name='password']").focus();
+                return;
+      }
+			
 						  
 		});
 	
