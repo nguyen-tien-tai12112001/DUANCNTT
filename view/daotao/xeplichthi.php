@@ -108,7 +108,7 @@
       </select>
     </div>
     <div class="tim-kiem">
-      <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
+      <input autocomplete="off" id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
       <button id="timkiemlich" class="btnTimKiem">Tìm kiếm</button>
       <script>
         $(document).ready(function() {

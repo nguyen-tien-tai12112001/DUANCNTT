@@ -167,7 +167,7 @@
     </div>
 
     <div class="tim-kiem">
-      <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã sinh viên">
+      <input autocomplete="off" type="text" id="timkiem" name="timkiem" placeholder="Nhập mã sinh viên">
       <button class="btnTimKiem">Tìm kiếm</button>
     </div>
     <script>
@@ -272,7 +272,7 @@
                           <span">Chi Tiêt</span>
                         </Button>
                         &nbsp;
-                        <Button id="<?= $info['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
+
                         <Button class="btnTimKiem capnhapsinhvien" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</Button>
                       </td>
                     </tr>
@@ -344,13 +344,13 @@
             <tr>
               <td class="modal-td" width="30%">Mã Sinh Viên:</td>
               <td class="modal-td">
-                <input id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?= $getmasv + 1 ?>" readonly />
+                <input autocomplete="off" id="masinhvien" name="masinhvien" class="form-control" type="text" value="A<?= $getmasv + 1 ?>" readonly />
               </td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Họ và tên:</td>
               <td class="modal-td">
-                <input id="hovaten" name="hovaten" class="form-control" type="text" />
+                <input autocomplete="off" id="hovaten" name="hovaten" class="form-control" type="text" />
               </td>
             </tr>
             <td class="modal-td" width="30%">Giới tính:</td>
@@ -363,27 +363,27 @@
             </tr>
             <tr>
               <td class="modal-td" width="30%">Số CMND/CCCD:</td>
-              <td class="modal-td"><input type="text" class="form-control" name="CMND" id="CMND"></td>
+              <td class="modal-td"><input autocomplete="off" type="text" class="form-control" name="CMND" id="CMND"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Ngày sinh:</td>
               <td class="modal-td">
-                <input class="form-control" type="date" id="ngaysinh" name="ngaysinh" />
+                <input autocomplete="off" class="form-control" type="date" id="ngaysinh" name="ngaysinh" />
               </td>
             </tr>
             <tr>
               <td class="modal-td">Điện thoại:</td>
-              <td class="modal-td"><input type="text" class="form-control" id="phone" name="phone"></td>
+              <td class="modal-td"><input autocomplete="off" type="text" class="form-control" id="phone" name="phone"></td>
             </tr>
             <tr>
               <td class="modal-td">Email SV:</td>
-              <td class="modal-td"><input type="text" class="form-control" value="A<?= $getmasv + 1 ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
+              <td class="modal-td"><input autocomplete="off" type="text" class="form-control" value="A<?= $getmasv + 1 ?>@thanglong.edu.vn" name="email" id="email" readonly></td>
             </tr>
 
             <tr>
               <td class="modal-td">Địa chỉ hộ khẩu:</td>
               <td class="modal-td">
-                <input type="text" class="form-control" name="diachi" id="diachi">
+                <input autocomplete="off" type="text" class="form-control" name="diachi" id="diachi">
 
               </td>
             </tr>

@@ -7,12 +7,14 @@
     margin-bottom: 15px;
 
   }
-  .chuyen-nganh p{
-    width:160px;
+
+  .chuyen-nganh p {
+    width: 160px;
     font-size: 17px;
 
   }
-  .chuyen-nganh select{
+
+  .chuyen-nganh select {
     font-size: 16px;
 
   }
@@ -33,13 +35,15 @@
     flex-direction: column;
     gap: 2rem;
   }
-  .ngay-dky p{
-    width:150px;
+
+  .ngay-dky p {
+    width: 150px;
     font-size: 17px;
 
   }
-  .ngay-dky input{
-    width:300px;
+
+  .ngay-dky input {
+    width: 300px;
   }
 
   .ngay-bdau {
@@ -155,7 +159,7 @@
             $i++ ?>
             <tr>
               <td style="text-align: center"><?= $i ?></td>
-              <td style="text-align: center"><input name="check[]" value="<?= $info['mamon'] ?>" type="checkbox"></td>
+              <td style="text-align: center"><input autocomplete="off" name="check[]" value="<?= $info['mamon'] ?>" type="checkbox"></td>
               <td style="text-align: center"><?= $info['tenmon'] ?></td>
 
               <td style="text-align: center"><?= $info['thu'] ?></td>
