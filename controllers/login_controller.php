@@ -29,7 +29,7 @@ class login_controller {
             if($check1 == "AD"){
                 $user = $this->dbadmin->login($tk,$mk);
                 
-                if($user)
+                if(mysqli_num_rows($user)>0)
                 {
                     $info=$this->dbadmin->getinfoadmin($tk);
                     $_SESSION['id']=$info['id'];

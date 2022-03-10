@@ -111,13 +111,7 @@
             return $this->execute($sql);
         }
         
-        ///// LOGIN
-        public  function  login($tk,$password)
-        {
-            $sql = "select * from admin where maadmin = '$tk' and password = '$password'";
-            $ListUser = $this->executeResult($sql);    
-            return $ListUser;
-        }
+      
         public function mkchecksinhvien($tk,$pass){
             $sql = "select * from `sinhvien` where `masinhvien`='$tk' and `password`='$pass' and trangthai_sv='Đang học'";
             $data=$this->execute($sql);
@@ -166,47 +160,7 @@
             return $this->execute($sql);
         }
 
-        public function countsSV(){
-            $sql = 'SELECT count(*) as sl  from sinhvien';
-            return $this->executeResult($sql);
-        }
-        public function countsGV(){
-            $sql = 'SELECT count(*) as sl  from giangvien where role_id = 2';
-            return $this->executeResult($sql);
-        }
-        public function countsNV(){
-            $sql = 'SELECT count(*) as sl  from giangvien where role_id = 3';
-            return $this->executeResult($sql);
-        }
-        public function countsSVNam(){
-            $sql = 'SELECT count(*) as sl  from sinhvien  where gioitinh = "Nam"';
-            return $this->executeResult($sql);
-        }
-        public function countsGVNam(){
-            $sql = 'SELECT count(*) as sl  from giangvien where gioitinh = "Nam"';
-            return $this->executeResult($sql);
-        }
-        public function monhocSL(){
-            $sql = 'SELECT count(*) as sl  from monhoc';
-            return $this->executeResult($sql);
-        }
-        public function chuyennganhSL(){
-            $sql = 'SELECT count(*) as sl  from chuyennganh';
-            return $this->executeResult($sql);
-        }
-        public function giangvienSL(){
-            $sql = 'SELECT count(*) as sl  from giangvien';
-            return $this->executeResult($sql);
-        }
-        public function countsSVNu(){
-            $sql = 'SELECT count(*) as sl  from sinhvien  where gioitinh = "Nữ"';
-            return $this->executeResult($sql);
-        }
-        public function countsGVNu(){
-            $sql = 'SELECT count(*) as sl  from giangvien  where gioitinh = "Nữ"';
-            return $this->executeResult($sql);
-        }
-
+       
         public function updatestudent($masinhvien,$hovaten,$gioitinh,$CMND,$ngaysinh,$phone,$email,$chuyennganh,$giaovien,$diachi,$lop,$pass,$id){
             $sql="UPDATE `sinhvien` SET `masinhvien` = '$masinhvien', `hovaten` = '$hovaten', `gioitinh`= '$gioitinh', password = $pass,`diachi` ='$diachi', `email`='$email', `dienthoai`= '$phone', 
             `cmnd` ='$CMND', `ngaysinh` ='$ngaysinh', `GVCN` ='$giaovien', `chuyennganh`= '$chuyennganh' ,`lop`='$lop' WHERE id='$id'";

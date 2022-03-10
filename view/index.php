@@ -182,7 +182,6 @@ else
 			let check = taikhoan[0];
       let check1 = taikhoan[0]+taikhoan[1];
       let count = 0;
-      console.log(check1);
 			if(taikhoan == null || taikhoan == "")
 			{
 				$("#alert").html('<strong class="text-danger">Mã đăng nhập không được để trống</strong>'); 

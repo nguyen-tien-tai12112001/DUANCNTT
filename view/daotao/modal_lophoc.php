@@ -24,7 +24,7 @@
             <td class="modal-td">
               <select id="chuyennganh_kt" name="chuyennganh_kt" class="form-control">
               
-                <?php foreach ($chuyennganh as $info1) { ?>
+                <?php foreach ($data_cn as $info1) { ?>
                   <option value="<?= $info1['machuyennganh'] ?>" <?php if($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected';?>><?= $info1['tenchuyennganh'] ?></option>
                 <?php } ?>
               </select>

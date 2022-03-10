@@ -327,7 +327,7 @@ class daotao_controller {
     }
     function timkiemmm()
     {
-        $mon=$this->daotao->timkiemmonhocmamon($_GET['key']);
+        $monhoc=$this->daotao->timkiemmonhocmamon($_GET['key']);
         if($monhoc ==0)
         {
             $monhoc = '';
@@ -549,15 +549,14 @@ class daotao_controller {
     {
         $this->daotao->xoalop($_GET['info']);
         $data_cn=$this->daotao->getAllData("chuyennganh");
-
         $lop=$this->daotao->getAllData("lopcn");
         require_once("./view/daotao/Danhsachlophoc_ajax.php");
     }
     function updatelophoc()
     {
- 
+
         $info=$this->daotao->getinfolophoc($_GET['malop']);
-        $chuyennganh=$this->daotao->selectlistchuyennganh();
+        $data_cn=$this->daotao->getAllData("chuyennganh");
         require_once("./view/daotao/modal_lophoc.php");
     }
     function capnhatlop()

@@ -350,7 +350,7 @@
           <?php
             }
           ?>
-          else if (tenlop == null || tenlop == "") {
+          if (tenlop == null || tenlop == "") {
             $("#alert").html('<strong class="text-danger">Tên lớp học không được để trống</strong>');
             $("input[name='tenlop']").focus();
             return;
