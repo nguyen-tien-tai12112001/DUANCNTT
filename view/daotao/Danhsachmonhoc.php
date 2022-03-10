@@ -14,7 +14,48 @@
   a {
     text-decoration: none;
   }
+  .item-monhoc {
+    align-items: center;
+  }
 
+  .chuyen-nganh {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+  }
+
+  .chuyen-nganh p {
+
+    font-size: 16px;
+  }
+
+  .chuyen-nganh select {
+    font-size: 16px;
+    border-radius: 5px;
+    /* border:none; */
+  }
+
+  .form-tkb {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .tim-kiem {
+    font-size: 14px;
+  }
+
+  .tim-kiem input {
+    padding: 5px 9px;
+    margin-right: -5px;
+  }
+
+  .form {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
   .item-monhoc {
     align-items: center;
   }
@@ -89,10 +130,14 @@
 
   </div>
   <div class="form">
+  
   <button type="button" data-toggle="modal" data-target="#ThemMonHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm môn Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+</div>
 
-  <div class="chuyen-nganh">
-      <p>Chọn chuyên ngành:</p>
+  <div class="form-tkb">
+    <div class="chuyen-nganh" >
+      <div style="display: flex;">
+      <p >Chọn chuyên ngành:</p>
       <select class="form-control" id="chuyennganh1">
         <option class="a" id="Tất cả">Tất cả</option>
         <?php
@@ -101,8 +146,8 @@
           echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
         }
         ?>
-
       </select>
+      </div>
       <script>
         $(function() {
           $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
@@ -120,10 +165,13 @@
         });
       </script>
     </div>
+
     <div class="tim-kiem">
       <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
-      <script>
+
+    </div>
+    <script>
         $(function() {
           $('#tntimkiem').trigger('click'); //This event will fire the change event. 
           $('#tntimkiem').click(function() {
@@ -138,7 +186,6 @@
           });
         });
       </script>
-    </div>
   </div>
   <div id="info">
     <table cellspacing="3" cellpadding="0" border="0px" width="100%">
