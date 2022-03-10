@@ -164,11 +164,7 @@
       <?php if (!isset($giodk['ngaybatdau'])) { ?>
         <h2>Hiện chưa có thời gian đăng ký học:</h2>
       <?php } else { ?>
-<<<<<<< HEAD
-        <h2>Thông báo thời gian đăng ký học:</h2>
-=======
         <h2 style="padding: 0;">Thông báo thời gian đăng ký học:</h2>
->>>>>>> 6c72a18287dad3312f43eeefc84e5c21de38785e
         <div class="time">
           <div class="times_item">
             <span><?= substr($giodk['ngaybatdau'], 0, -8); ?></span>
