@@ -1,24 +1,23 @@
 <?php if (!isset($_SESSION['role_id']) or $_SESSION['role_id'] != "3") {
   header('location:index.php?controller=login&action=login');
-} else if($_SESSION['role_id'] == 4)
-{
+} else if ($_SESSION['role_id'] == 4) {
   header('location:index.php?controller=admin');
-}?>
+} ?>
 <html>
 
 <head>
   <title> </title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!-- <script type="text/javascript" src="./view/js/tooltip.js"></script>
   <script type="text/javascript" src="./view/js/thickbox-compressed.js"></script>
   <script src="./view/js/java.js" type="text/javascript"></script> -->
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('input.number').keypress(function (e) {
+    $(document).ready(function() {
+      $('input.number').keypress(function(e) {
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
           return false;
         }
@@ -28,9 +27,9 @@
 
   <link href="./App_Themes/abrasive/a10777.css" type="text/css" rel="stylesheet" />
   <link href="./App_Themes/abrasive/em.css" type="text/css" rel="stylesheet" />
- 
+
   <link href="./App_Themes/abrasive/style.css" type="text/css" rel="stylesheet" />
- 
+
   <style>
     .flex {
       display: flex;
@@ -77,7 +76,6 @@
       font-size: 16px;
       font-family: 'Times New Roman', Times, serif;
     }
-    
   </style>
 </head>
 
@@ -146,9 +144,9 @@
 
             <ul class="sub-menu" style="display: block">
               <li class="chon">
-              <a style="text-decoration: none" href="?controller=sinhvien">
-                Thông tin cá nhân</a>
-              </li>                                                                             
+                <a style="text-decoration: none" href="?controller=sinhvien">
+                  Thông tin cá nhân</a>
+              </li>
               <li><a style=" text-decoration: none;" href="?controller=daotao&action=giangvien">Quản lý giáo viên</a></li>
               <li><a style=" text-decoration: none;" href="?controller=daotao&action=giangday">Phân công giảng dạy</a></li>
 
@@ -169,7 +167,7 @@
             <h3 class="title">Góc môn học</h3>
 
             <ul class="sub-menu" style="display: block">
-              <li><a style=" text-decoration: none;" href="?controller=daotao&action=danhsachlophoc">Quản lý lớp học</a></li>                                                                              
+              <li><a style=" text-decoration: none;" href="?controller=daotao&action=danhsachlophoc">Quản lý lớp </a></li>
               <li><a style=" text-decoration: none;" href="?controller=daotao&action=danhsachmonhoc">Quản lý môn học</a></li>
               <li><a style=" text-decoration: none;" href="?controller=daotao&action=danh_sach_chuyen_nganh">Quản lý chuyên ngành</a></li>
 

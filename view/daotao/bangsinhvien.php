@@ -1,12 +1,12 @@
 <div id="info">
-      
-    
-  <table cellspacing="3" cellpadding="0" border="0px" width="100%">
+
+
+  <table cellspacing="3" cellpadding="0" width="100%">
     <tbody>
       <tr valign="top">
         <td style="width: 100%">
           <div id="bangdiem1">
-            <table class="grid" cellspacing="0" border="0" id="ctl00_c_GridDC" style="
+            <table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
@@ -86,7 +86,7 @@
                         <span">Chi Tiêt</span>
                       </Button>
                       &nbsp;
-                      <Button id="<?= $info['masinhvien'] ?>" class="btnTimKiem" type="button" data-toggle="modal" data-target="#myModal2">Đánh Giá</Button>
+
                       <Button class="btnTimKiem capnhapsinhvien" id="<?= $info['masinhvien'] ?>" type="button" data-toggle="modal" data-target="#suasinhvien">Cập Nhật</Button>
                     </td>
                   </tr>
@@ -127,5 +127,3 @@
     </tbody>
   </table>
 </div>
-
-

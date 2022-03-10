@@ -133,7 +133,7 @@ class sinhvien
     }
     public function getinfosinhvien1($tk)
     {
-        $sql = "select (g.hovaten) as tengv,masinhvien, s.gioitinh ,s.diachi,s.email,s.dienthoai,s.cmnd,s.ngaysinh,s.image,s.lop,s.chuyennganh from sinhvien s join giangvien g on s.GVCN=g.magiangvien where `masinhvien`='$tk'  ";
+        $sql = "select (g.hovaten) as tengv,s.hovaten,masinhvien, s.gioitinh ,s.diachi,s.email,s.dienthoai,s.cmnd,s.ngaysinh,s.image,s.lop,s.chuyennganh from sinhvien s join giangvien g on s.GVCN=g.magiangvien where `masinhvien`='$tk'  ";
 
         $data = $this->execute($sql);
         if ($this->dem() != 0) {

@@ -11,17 +11,19 @@
     align-items: baseline;
 
   }
-  .chuyen-nganh select{
-    
+
+  .chuyen-nganh select {
+
     font-size: 16px;
     border-radius: 5px;
   }
-  .chuyen-nganh p{
-    width:200px;
+
+  .chuyen-nganh p {
+    width: 200px;
     font-size: 16px;
   }
 
-  
+
   .trang-thai {
     display: flex;
     gap: 5px;
@@ -36,8 +38,9 @@
 
     border-radius: 5px;
   }
+
   .trang-thai p {
-    width:140px;
+    width: 140px;
     font-size: 16px;
 
 
@@ -149,7 +152,7 @@
     </div>
 
     <div class="tim-kiem">
-      <input type="text" id="timkiem" name="timkiem" placeholder="Nhập mã giáo viên,tên giáo viên">
+      <input autocomplete="off" type="text" id="timkiem" name="timkiem" placeholder="Nhập mã giáo viên,tên giáo viên">
       <button class="btnTimKiem">Tìm kiếm</button>
     </div>
     <script>
@@ -192,12 +195,12 @@
     </select>
   </div>
 
-  <table cellspacing="3" cellpadding="0"  width="100%">
+  <table cellspacing="3" cellpadding="0" width="100%">
     <tbody>
       <tr valign="top">
         <td style="width: 100%">
           <div id="bangdiem1">
-            <table class="grid" cellspacing="0"  id="ctl00_c_GridDC" style="
+            <table class="grid" cellspacing="0" id="ctl00_c_GridDC" style="
                           border-style: None;
                           width: 100%;
                           border-collapse: collapse;
@@ -296,15 +299,15 @@
       </div>
       <div class="modal-body">
 
-        <table width="100%" >
+        <table width="100%">
           <tbody class="table">
             <tr>
               <td class="modal-td" width="30%">Mã GV:</td>
-              <td class="modal-td"><input type="text" id="magiangvien" name="magiangvien" class="form-control" value="GV<?= $getmgv + 1 ?>" readonly></td>
+              <td class="modal-td"><input autocomplete="off" type="text" id="magiangvien" name="magiangvien" class="form-control" value="GV<?= $getmgv + 1 ?>" readonly></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Tên giáo viên:</td>
-              <td class="modal-td"><input type="text" id="hovaten" name="hovaten" class="form-control" autocomplete="off"></td>
+              <td class="modal-td"><input autocomplete="off" type="text" id="hovaten" name="hovaten" class="form-control" autocomplete="off"></td>
             </tr>
 
             <tr>
@@ -323,7 +326,7 @@
             <tr>
               <td class="modal-td" width="30%">Ngày sinh:</td>
               <td class="modal-td">
-                <input class="form-control" id="ngaysinh" name="ngaysinh" type="date" />
+                <input autocomplete="off" class="form-control" id="ngaysinh" name="ngaysinh" type="date" />
               </td>
             </tr>
             <tr>
@@ -453,7 +456,7 @@
             $("#alert").html('<strong class="text-danger">Số điện thoại phải là số</strong>');
             $("input[name='phone']").focus();
             return;
-          }else if (diachi == null || diachi == "") {
+          } else if (diachi == null || diachi == "") {
             $("#alert").html('<strong class="text-danger">Địa chỉ không được để trống</strong>');
             $("select[name='diachi']").focus();
             return;
@@ -461,30 +464,27 @@
             $("#alert").html('<strong class="text-danger">Chuyên ngành không được để trống</strong>');
             $("select[name='chuyennganh']").focus();
             return;
-          } 
-          
-          
-          else{
+          } else {
             $('#myModal').modal('hide');
             $.get("./index.php", {
-            controller: "daotao",
-            action: "creategiangvien",
-            magiangvien: magiangvien,
-            hovaten: hovaten,
-            gioitinh: gioitinh,
-            CMND: CMND,
-            ngaysinh: ngaysinh,
-            phone: phone,
-            email: email,
-            chuyennganh: chuyennganh,
-            diachi: diachi,
-            lop: lop
-          }, function(data) {
-            $("#bangdiem2").html(data);
-            location.reload();
-          })
+              controller: "daotao",
+              action: "creategiangvien",
+              magiangvien: magiangvien,
+              hovaten: hovaten,
+              gioitinh: gioitinh,
+              CMND: CMND,
+              ngaysinh: ngaysinh,
+              phone: phone,
+              email: email,
+              chuyennganh: chuyennganh,
+              diachi: diachi,
+              lop: lop
+            }, function(data) {
+              $("#bangdiem2").html(data);
+              location.reload();
+            })
           }
-        
+
         });
       });
     </script>

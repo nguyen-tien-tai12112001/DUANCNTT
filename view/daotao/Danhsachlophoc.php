@@ -1,20 +1,11 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
-
-  
-
   .form-tkb {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
   }
-
-  
-
-  
-
-  
 
   .tim-kiem {
     display: flex;
@@ -32,6 +23,7 @@
     justify-content: space-between;
     margin-bottom: 2rem;
   }
+
   td {
     text-align: center;
   }
@@ -52,13 +44,14 @@
 
   .chuyen-nganh {
     display: flex;
-    
+
     font-size: 16px;
-    
+
   }
-  .chuyen-nganh p{
+
+  .chuyen-nganh p {
     width: 150px;
-    
+
   }
 
   .tim-kiem {
@@ -131,7 +124,7 @@
 <!-- Right -->
 <div id="right" style="width: 100%; margin-left:10px;">
   <div class="title">
-    Quản lý Lớp học
+    Quản lý lớp chuyên ngành
 
   </div>
   <div class="form">
@@ -144,29 +137,29 @@
       <div style="display: flex;">
         <p>Chọn chuyên ngành:</p>
         <select class="form-control" id="chuyennganh1" style="width:60%;">
-      <option class="a" id="Tất cả">Tất cả</option>
-      <?php
-      foreach ($data_cn as $CN) {
-        echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
-      }
-      ?>
-    </select>
+          <option class="a" id="Tất cả">Tất cả</option>
+          <?php
+          foreach ($data_cn as $CN) {
+            echo '<option value="' . $CN['machuyennganh'] . '">' . $CN['tenchuyennganh'] . '</option>';
+          }
+          ?>
+        </select>
       </div>
       <script>
-      $(function() {
-        $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
-        $('#chuyennganh1').change(function() {
-          var data = $(this).val();
-          $.get("./index.php", {
-            controller: "daotao",
-            action: "locloptheocn",
-            info: data
-          }, function(data) {
-            $("#info").html(data);
-          })
+        $(function() {
+          $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
+          $('#chuyennganh1').change(function() {
+            var data = $(this).val();
+            $.get("./index.php", {
+              controller: "daotao",
+              action: "locloptheocn",
+              info: data
+            }, function(data) {
+              $("#info").html(data);
+            })
+          });
         });
-      });
-    </script>
+      </script>
     </div>
 
     <div class="tim-kiem">
@@ -174,25 +167,25 @@
       <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
     </div>
     <script>
-        $(function() {
-          $('#tntimkiem').trigger('click'); //This event will fire the change event. 
-          $('#tntimkiem').click(function() {
-            var data = $('#timkiem').val();
-            $.get("./index.php", {
-              controller: "daotao",
-              action: "timkiemlop",
-              key: data
-            }, function(data) {
-              $("#info").html(data);
-            })
-          });
+      $(function() {
+        $('#tntimkiem').trigger('click'); //This event will fire the change event. 
+        $('#tntimkiem').click(function() {
+          var data = $('#timkiem').val();
+          $.get("./index.php", {
+            controller: "daotao",
+            action: "timkiemlop",
+            key: data
+          }, function(data) {
+            $("#info").html(data);
+          })
         });
-      </script>
-    
+      });
+    </script>
+
   </div>
 
-  
-  
+
+
   <div id="info">
     <table cellspacing="3" cellpadding="0" border="0px" width="100%">
       <tbody>
@@ -298,11 +291,11 @@
           <tbody class="table">
             <tr>
               <td class="modal-td" width="30%">Mã Lớp:</td>
-              <td class="modal-td"><input id="malop" name="malop" type="text" class="form-control"></td>
+              <td class="modal-td"><input id="malop" autocomplete="off" name="malop" type="text" class="form-control"></td>
             </tr>
             <tr>
               <td class="modal-td" width="30%">Tên Lớp</td>
-              <td class="modal-td"><input id="tenlop" name="tenlop" type="text" class="form-control"></td>
+              <td class="modal-td"><input id="tenlop" autocomplete="off" name="tenlop" type="text" class="form-control"></td>
             <tr>
               <td class="modal-td">Chuyên Ngành:</td>
               <td class="modal-td">
@@ -350,7 +343,8 @@
           <?php
             }
           ?>
-          else if (tenlop == null || tenlop == "") {
+
+          if (tenlop == null || tenlop == "") {
             $("#alert").html('<strong class="text-danger">Tên lớp học không được để trống</strong>');
             $("input[name='tenlop']").focus();
             return;
