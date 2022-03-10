@@ -106,11 +106,20 @@
                   margin-right: auto;
                 }
               </style>
-             <!-- Content Row -->
-             <div class="col-xl-12 col-lg-12">
-               <div class="chartBarJS">
-                 <canvas id="myChart"></canvas>
-               </div>
+               <div class="col-xl-12 col-lg-12">
+               <div class="card shadow mb-4">
+                   <!-- Card Header - Dropdown -->
+                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                     <h6 class="m-0 font-weight-bold text-primary">Biểu đồ số lượng học sinh khá giỏi</h6>
+                   </div>
+                   <!-- Card Body -->
+                   <div class="card-body">
+                   <div class="chartBarJS">
+                      <canvas id="myChart"></canvas>
+                    </div>
+                   </div>
+                 </div>
+             
              </div>
              <div class="row">
 
