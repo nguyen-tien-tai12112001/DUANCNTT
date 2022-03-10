@@ -205,7 +205,7 @@
             <tbody>
               <?php $i = 0;
               foreach ($data as $info) {
-                $i++;
+               
                 $checkmm = 1;
                 foreach ($data3 as $info3) {
                   if ($info['mamon'] == $info3['mamon']) {
@@ -213,7 +213,7 @@
                     $checkmm = 0;
                   }
                 }
-                if ($checkmm == 1) {
+                if ($checkmm == 1) {  $i++;
               ?>
 
                   <tr>
@@ -310,7 +310,7 @@
               <tbody>
                 <?php $i = 0;
                 foreach ($data1 as $info) {
-                  $i++;
+                  
                   $checkmmm = 1;
                   foreach ($data3 as $info3) {
                     if ($info['mamon'] == $info3['mamon']) {
@@ -318,7 +318,8 @@
                       $checkmmm = 0;
                     }
                   }
-                  if ($checkmmm == 1) { ?>
+                  if ($checkmmm == 1) { $i++; ?>
+                  
                     <tr>
                       <td style="
                       width: 30px;

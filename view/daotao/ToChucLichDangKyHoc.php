@@ -129,7 +129,8 @@
   <form action="" method="POST">
     <div id="ToChucLichDangKyHoc1" class="list-monhoc">
       <p>Chọn môn học:</p>
-
+      
+            
       <ul>
         <?php $i = 0;
         foreach ($data as $value) { ?>

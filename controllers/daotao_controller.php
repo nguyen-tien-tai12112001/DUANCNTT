@@ -548,6 +548,8 @@ class daotao_controller {
     function xoalop()
     {
         $this->daotao->xoalop($_GET['info']);
+        $data_cn=$this->daotao->getAllData("chuyennganh");
+
         $lop=$this->daotao->getAllData("lopcn");
         require_once("./view/daotao/Danhsachlophoc_ajax.php");
     }
