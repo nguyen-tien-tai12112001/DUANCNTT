@@ -163,7 +163,7 @@ class admin
     }
 
     ///// LOGIN
-    public  function  login($tk, $password)
+    public  function  loginadmin($tk, $password)
     {
         $sql = "select * from admin where maadmin = '$tk' and password = '$password'";
         $data = $this->execute($sql);

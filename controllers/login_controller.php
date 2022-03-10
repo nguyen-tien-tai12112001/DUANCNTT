@@ -27,7 +27,7 @@ class login_controller {
             $check = substr($tk, 0, 1);
             $check1 = substr($tk, 0, 2);
             if($check1 == "AD"){
-                $user = $this->dbadmin->login($tk,$mk);
+                $user = $this->dbadmin->loginadmin($tk,$mk);
                 
                 if(mysqli_num_rows($user)>0)
                 {
