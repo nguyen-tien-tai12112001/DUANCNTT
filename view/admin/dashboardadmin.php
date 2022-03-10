@@ -433,7 +433,13 @@
        const config = {
          type: 'bar',
          data: data,
-         options: {}
+         options: {
+          scales: {
+            xAxes: [{
+                barThickness: 40,  // number (pixels) or 'flex'
+            }]
+        }
+         }
        };
      </script>
      <script>
