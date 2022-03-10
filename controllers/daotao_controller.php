@@ -289,14 +289,8 @@ class daotao_controller
     }
     function timkiemmm()
     {
-<<<<<<< HEAD
-        $monhoc=$this->daotao->timkiemmonhocmamon($_GET['key']);
-        if($monhoc ==0)
-        {
-=======
         $monhoc = $this->daotao->timkiemmonhocmamon($_GET['key']);
         if ($monhoc == 0) {
->>>>>>> d3627d04dfc15cae2b9e99fe15c4e60caf1afc87
             $monhoc = '';
         }
         require_once("./view/daotao/bangmonhoc.php");
@@ -504,26 +498,15 @@ class daotao_controller
     function xoalop()
     {
         $this->daotao->xoalop($_GET['info']);
-<<<<<<< HEAD
         $data_cn=$this->daotao->getAllData("chuyennganh");
         $lop=$this->daotao->getAllData("lopcn");
-=======
-        $data_cn = $this->daotao->getAllData("chuyennganh");
-
-        $lop = $this->daotao->getAllData("lopcn");
->>>>>>> d3627d04dfc15cae2b9e99fe15c4e60caf1afc87
         require_once("./view/daotao/Danhsachlophoc_ajax.php");
     }
     function updatelophoc()
     {
 
-<<<<<<< HEAD
         $info=$this->daotao->getinfolophoc($_GET['malop']);
         $data_cn=$this->daotao->getAllData("chuyennganh");
-=======
-        $info = $this->daotao->getinfolophoc($_GET['malop']);
-        $data_cn = $this->daotao->selectlistchuyennganh();
->>>>>>> d3627d04dfc15cae2b9e99fe15c4e60caf1afc87
         require_once("./view/daotao/modal_lophoc.php");
     }
     function capnhatlop()
