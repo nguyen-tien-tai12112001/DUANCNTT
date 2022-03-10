@@ -87,14 +87,7 @@
             }
             return $data;
         }
-        // public function diemtrungbinh(){
-        //     $sql = "sELECT count(svdm.masinhvien) as hocsinhgioi,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<8 and svdm.diemtongket>6.5) as hocsinhkha,(SELECT count(svdm.masinhvien)  FROM `sinhvien-diemmon` 
-        //     svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket<6.5) 
-        //     as hocsinhtb FROM `sinhvien-diemmon` svdm INNER join `sinhvien` on sinhvien.masinhvien = svdm.masinhvien WHERE svdm.diemtongket>8";
-        //     $data = $this->executeResult($sql);    
-        //     return $data;
-            
-        // }
+        
         // / Sinh vien
         public function getinfosinhvien($msv){
             $sql = "select `sinhvien`.*, `giangvien`.hovaten as `hvt` from `sinhvien` inner join `giangvien` on `sinhvien`.GVCN=`giangvien`.magiangvien WHERE masinhvien='$msv'";

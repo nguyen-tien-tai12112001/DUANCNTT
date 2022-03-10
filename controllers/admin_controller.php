@@ -4,8 +4,7 @@ use models\DatabaseConnection;
 class admin_controller
 {
     public function run()
-    {
-       
+    { 
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
         $this->db = new admin($dbc);
@@ -84,7 +83,7 @@ class admin_controller
         $giangvienSL =$this->db->giangvienSL();
         $chuyennganhSL =$this->db->chuyennganhSL();
         $monhocSL =$this->db->monhocSL();
-        $diemtrungbinh= $this->db->diemtrungbinh();
+        // $diemtrungbinh= $this->db->diemtrungbinh();
         require_once("./view/admin/dashboardadmin.php");
     }
     function themsinhvien()

@@ -4,6 +4,10 @@ final class DatabaseConnection {
     
     private static $instance = null;
     private static $connection;
+    private $_host = "localhost";
+	private $_username = "root";
+	private $_password = "";
+	private $_database = "pointmanagement";
     
     public static function getInstance() {
         if (is_null(self::$instance)){
@@ -13,39 +17,14 @@ final class DatabaseConnection {
         return self::$instance;
     }
     
-    private function __construct() {}
+    private function __construct() {
+        self::$connection = mysqli_connect($this->_host, $this->_username, 
+        $this->_password, $this->_database);
+        
+    }
     
     private function __clone() {}
-    
-    
-    // private function __wakeup() {}
-    // final public function __clone()
-    // {
-    //     throw new Exception('Feature disabled.');
-    // }
 
-    // /**
-    //  * Disable the wakeup of this class.
-    //  * 
-    //  * @return void
-    //  */
-    // final public function __wakeup()
-    // {
-    //     throw new Exception('Feature disabled.');
-    // }
-    
-     
-    public static function connect($host, $dbName, $user, $password){
-        // self::$connection = new \PDO("mysql:dbname=$dbName;host=$host", $user, $password);
-        self::$connection = mysqli_connect('localhost', 'root', '', 'pointmanagement');
-        // 'localhost', 'pointmanagement', 'root', ''
-
-        // $this->conn = new mysqli($this->hostname, $this->username, $this->pass, $this->dbname);
-
-        
-    
-       return self::$connection;
-    }
     
     public static function getConnection() {
         return self::$connection;
