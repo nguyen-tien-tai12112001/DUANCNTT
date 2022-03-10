@@ -11,11 +11,17 @@
     align-items: baseline;
 
   }
-
-  .chuyen-nganh select {
+  .chuyen-nganh select{
+    
+    font-size: 16px;
     border-radius: 5px;
   }
+  .chuyen-nganh p{
+    width:200px;
+    font-size: 16px;
+  }
 
+  
   .trang-thai {
     display: flex;
     gap: 5px;
@@ -26,7 +32,15 @@
   }
 
   .trang-thai select {
+    font-size: 16px;
+
     border-radius: 5px;
+  }
+  .trang-thai p {
+    width:140px;
+    font-size: 16px;
+
+
   }
 
   .tim-kiem {
@@ -171,7 +185,7 @@
   </script>
   <div class="trang-thai">
     <p>Chọn trạng thái:</p>
-    <select class="form-control" style="width:10%; margin-left:-100px" id="chontrangthai">
+    <select class="form-control" style="width:20%;" id="chontrangthai">
       <option>Tất cả</option>
       <option>Đang dạy</option>
       <option>Đã nghỉ</option>

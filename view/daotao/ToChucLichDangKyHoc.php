@@ -7,6 +7,15 @@
     margin-bottom: 15px;
 
   }
+  .chuyen-nganh p{
+    width:160px;
+    font-size: 17px;
+
+  }
+  .chuyen-nganh select{
+    font-size: 16px;
+
+  }
 
   .list-monhoc {
 
@@ -21,17 +30,26 @@
     margin-top: 15px;
     font-size: 16px;
     display: flex;
+    flex-direction: column;
     gap: 2rem;
+  }
+  .ngay-dky p{
+    width:150px;
+    font-size: 17px;
+
+  }
+  .ngay-dky input{
+    width:300px;
   }
 
   .ngay-bdau {
     display: flex;
-    gap: 5px;
+    gap: 2px;
   }
 
   .ngay-ketthuc {
     display: flex;
-    gap: 5px;
+    gap: 2px;
   }
 
   .btn-xacnhan {
@@ -77,14 +95,14 @@
 
 
 <!-- Right -->
-<div id="right" style="width: 100%; margin-left:10px;">
+<div id="right" style="width: 83%; margin-left:10px;">
   <div class="title">
     Tổ chức lịch đăng ký học cho sinh viên
   </div>
   <div class="chuyen-nganh">
     <p>Chọn chuyên ngành:</p>
     &nbsp;
-    <select class="form-control" id="chuyennganh1" style="width:20%">
+    <select class="form-control" id="chuyennganh1" style="width:40%">
       <option class="a" id="Tất cả">Tất cả</option>
       <?php
       foreach ($data_cn as $CN) {

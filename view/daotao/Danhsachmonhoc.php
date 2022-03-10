@@ -19,11 +19,7 @@
     align-items: center;
   }
 
-  .chuyen-nganh {
-    display: flex;
-    gap: 5px;
-    align-items: baseline;
-  }
+  
 
   .chuyen-nganh p {
 
@@ -42,25 +38,9 @@
     margin-bottom: 20px;
   }
 
-  .tim-kiem {
-    font-size: 14px;
-  }
+  
 
-  .tim-kiem input {
-    padding: 5px 9px;
-    margin-right: -5px;
-  }
-
-  .form {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-  }
-
-  .item-monhoc {
-    align-items: center;
-  }
+  
 
   .chuyen-nganh {
     display: flex;

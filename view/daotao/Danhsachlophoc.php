@@ -1,6 +1,37 @@
 <?php require_once('./view/layouts/headerDaoTao.php'); ?>
 <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 <style>
+
+  
+
+  .form-tkb {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  
+
+  
+
+  
+
+  .tim-kiem {
+    display: flex;
+    /* gap:10px; */
+  }
+
+  .tim-kiem input {
+    padding: 5px 8px;
+    font-size: 15px;
+  }
+
+  .form {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
   td {
     text-align: center;
   }
@@ -21,9 +52,13 @@
 
   .chuyen-nganh {
     display: flex;
-    gap: 5px;
+    
     font-size: 16px;
-    align-items: flex-start;
+    
+  }
+  .chuyen-nganh p{
+    width: 150px;
+    
   }
 
   .tim-kiem {
@@ -101,32 +136,14 @@
   </div>
   <div class="form">
 
-    <button type="button" data-toggle="modal" data-target="#ThemLopHoc" class="btnUpdate btn">Thêm Lớp Học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
-
-    <div class="tim-kiem">
-      <input id="timkiem" type="text" placeholder="Nhập mã môn,tên môn">
-      <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
-      <script>
-        $(function() {
-          $('#tntimkiem').trigger('click'); //This event will fire the change event. 
-          $('#tntimkiem').click(function() {
-            var data = $('#timkiem').val();
-            $.get("./index.php", {
-              controller: "daotao",
-              action: "timkiemlop",
-              key: data
-            }, function(data) {
-              $("#info").html(data);
-            })
-          });
-        });
-      </script>
-    </div>
-
+    <button type="button" data-toggle="modal" data-target="#ThemLopHoc" class="btnUpdate btn" style="margin-bottom: 10px;">Thêm lớp học &nbsp;<span class="glyphicon glyphicon-plus"></span></button>
   </div>
-  <div style="display: flex;">
-    <p>Chọn chuyên ngành:</p>
-    <select class="form-control" id="chuyennganh1" style="width:20%;margin-left:-50px">
+
+  <div class="form-tkb">
+    <div class="chuyen-nganh">
+      <div style="display: flex;">
+        <p>Chọn chuyên ngành:</p>
+        <select class="form-control" id="chuyennganh1" style="width:60%;">
       <option class="a" id="Tất cả">Tất cả</option>
       <?php
       foreach ($data_cn as $CN) {
@@ -134,7 +151,8 @@
       }
       ?>
     </select>
-    <script>
+      </div>
+      <script>
       $(function() {
         $('#chuyennganh1').trigger('change'); //This event will fire the change event. 
         $('#chuyennganh1').change(function() {
@@ -149,13 +167,32 @@
         });
       });
     </script>
+    </div>
+
+    <div class="tim-kiem">
+      <input id="timkiem" type="text" placeholder="Nhập mã lớp,tên lớp">
+      <button id="tntimkiem" class="btnTimKiem">Tìm kiếm</button>
+    </div>
+    <script>
+        $(function() {
+          $('#tntimkiem').trigger('click'); //This event will fire the change event. 
+          $('#tntimkiem').click(function() {
+            var data = $('#timkiem').val();
+            $.get("./index.php", {
+              controller: "daotao",
+              action: "timkiemlop",
+              key: data
+            }, function(data) {
+              $("#info").html(data);
+            })
+          });
+        });
+      </script>
+    
   </div>
-  <!-- <div style="display: flex;">
-      <p>Chọn môn học:</p>
-      <select  class="form-control" id="chuyennganh1" style="width:20%;margin-left:-50px">
-        <option class="a" id="Tất cả">Tất cả</option>
-      </select>
-  </div> -->
+
+  
+  
   <div id="info">
     <table cellspacing="3" cellpadding="0" border="0px" width="100%">
       <tbody>

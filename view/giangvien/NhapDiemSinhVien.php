@@ -46,7 +46,7 @@
 </style>
 
 <!-- Right -->
-<div id="right" style="width:100%; ">
+<div id="right" style="width:100%;margin-left:10px ">
     <div class="title">Nhập điểm sinh viên</div>
     <div class="entry">
         <div class="container_timkiem">
@@ -147,7 +147,7 @@
                 <th style="border: 1px solid #dddddd;
                 text-align: center;width:140px;
                 padding: 5px;">
-                    Mã sinh viên
+                    Mã SV
                 </th>
                 <th style="border: 1px solid #dddddd;
                 text-align: center;width:16%;

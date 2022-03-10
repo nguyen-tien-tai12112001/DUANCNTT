@@ -9,7 +9,7 @@
                 <th style="border: 1px solid #dddddd;
             text-align: center;
             padding: 5px;">
-                    Mã sinh viên
+                    Mã SV
                 </th>
                     <th style="border: 1px solid #dddddd;
                 text-align: center;
