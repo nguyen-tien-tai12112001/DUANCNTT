@@ -123,7 +123,12 @@
             $data=$this->execute($sql);
             return $data;
         }
-
+        public function listStudentlogin()
+        {
+            $sql = "select * from `sinhvien` where  trangthai_sv='Đang học'";
+            $data=$this->execute($sql);
+            return $data;
+        }
         public function getinfosinhvien1($tk){
             $sql = "select * from sinhvien where `masinhvien`='$tk' ";
             
