@@ -52,6 +52,7 @@
                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $giangvienSL[0]['sl'] ?></div>
                        </div>
                        <div class="col-auto">
+
                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
                        </div>
                      </div>
@@ -99,27 +100,27 @@
                  </div>
                </div>
              </div>
-              <style>
-                .chartBarJS{
-                  width: 70%;
-                  margin-left: auto;
-                  margin-right: auto;
-                }
-              </style>
-               <div class="col-xl-12 col-lg-12">
+             <style>
+               .chartBarJS {
+                 width: 70%;
+                 margin-left: auto;
+                 margin-right: auto;
+               }
+             </style>
+             <div class="col-xl-12 col-lg-12">
                <div class="card shadow mb-4">
-                   <!-- Card Header - Dropdown -->
-                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                     <h6 class="m-0 font-weight-bold text-primary">Biểu đồ số lượng học sinh khá giỏi</h6>
-                   </div>
-                   <!-- Card Body -->
-                   <div class="card-body">
+                 <!-- Card Header - Dropdown -->
+                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                   <h6 class="m-0 font-weight-bold text-primary">Biểu đồ số lượng học sinh khá giỏi</h6>
+                 </div>
+                 <!-- Card Body -->
+                 <div class="card-body">
                    <div class="chartBarJS">
-                      <canvas id="myChart"></canvas>
-                    </div>
+                     <canvas id="myChart"></canvas>
                    </div>
                  </div>
-             
+               </div>
+
              </div>
              <div class="row">
 
@@ -167,7 +168,7 @@
                  </div>
                </div>
              </div>
-             
+
 
            </div>
          </div>
@@ -175,42 +176,41 @@
        </div>
      </div>
      <style type="text/css">
-	   #btn-vedau
-	    {
-	        display:none;
-	        position:fixed;
-	        z-index:999;
-	        right:20px;
-	        top:90%;
-	        cursor:pointer;
-	        opacity:0.6;
-	        color:#fff;
-	        font-size:2.0em;
-          transition: all 0.5s;
-	    }
+       #btn-vedau {
+         display: none;
+         position: fixed;
+         z-index: 999;
+         right: 20px;
+         top: 90%;
+         cursor: pointer;
+         opacity: 0.6;
+         color: #fff;
+         font-size: 2.0em;
+         transition: all 0.5s;
+       }
 
-      #btn-vedau:hover
-	    {
-	        opacity:1.0;
-	    }
-	</style>
-     <div  onclick="page_scroll2top()" id="btn-vedau" >
-        <button class="btn btn-success">Về đầu</button>
+       #btn-vedau:hover {
+         opacity: 1.0;
+       }
+     </style>
+     <div onclick="page_scroll2top()" id="btn-vedau">
+       <button class="btn btn-success">Về đầu</button>
      </div>
      <script>
-        var btnVedau = document.getElementById('#btn-vedau')
-        $(window).scroll(function(){
-          if($(window).scrollTop() >= 30) {
-            $('#btn-vedau').show();
-          } else {
-            $('#btn-vedau').hide();
-          }
-        });
-        function page_scroll2top(){
-          $('html,body').animate({
-            scrollTop: 0
-            }, 'fast');
-        }
+       var btnVedau = document.getElementById('#btn-vedau')
+       $(window).scroll(function() {
+         if ($(window).scrollTop() >= 30) {
+           $('#btn-vedau').show();
+         } else {
+           $('#btn-vedau').hide();
+         }
+       });
+
+       function page_scroll2top() {
+         $('html,body').animate({
+           scrollTop: 0
+         }, 'fast');
+       }
      </script>
      <!-- Bootstrap core JavaScript-->
      <script src="vendor/jquery/jquery.min.js"></script>
@@ -412,9 +412,9 @@
 
      <script>
        const labels = [
-        'Học sinh giỏi',
-        'Học sinh Khá',
-        'Học sinh Trung bình'
+         'Học sinh giỏi',
+         'Học sinh Khá',
+         'Học sinh Trung bình'
        ];
 
        const data = {
@@ -422,11 +422,12 @@
          datasets: [{
            label: 'Số lượng',
            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-             hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-             hoverBorderColor: "rgba(234, 236, 244, 1)",
-           data: [<?= $diemgioi?>,
-        <?= $diemkha ?>,
-        <?= $diemtb ?>],
+           hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+           hoverBorderColor: "rgba(234, 236, 244, 1)",
+           data: [<?= $diemgioi ?>,
+             <?= $diemkha ?>,
+             <?= $diemtb ?>
+           ],
          }]
        };
 
@@ -434,11 +435,11 @@
          type: 'bar',
          data: data,
          options: {
-          scales: {
-            xAxes: [{
-                barThickness: 40,  // number (pixels) or 'flex'
-            }]
-        }
+           scales: {
+             xAxes: [{
+               barThickness: 40, // number (pixels) or 'flex'
+             }]
+           }
          }
        };
      </script>

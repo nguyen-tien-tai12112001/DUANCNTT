@@ -159,7 +159,7 @@
             $i++ ?>
             <tr>
               <td style="text-align: center"><?= $i ?></td>
-              <td style="text-align: center"><input autocomplete="off" name="check[]" value="<?= $info['mamon'] ?>" type="checkbox"></td>
+              <td style="text-align: center;"><input style="font-size:50px;" autocomplete="off" name="check[]" value="<?= $info['mamon'] ?>" type="checkbox"></td>
               <td style="text-align: center"><?= $info['tenmon'] ?></td>
 
               <td style="text-align: center"><?= $info['thu'] ?></td>
@@ -173,6 +173,7 @@
           <?php } ?>
         </tbody>
       </table>
+
     </div>
     <div class="ngay-dky">
       <div class="ngay-bdau">
