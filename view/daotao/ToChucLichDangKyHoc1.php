@@ -22,7 +22,7 @@
 
     <tbody>
       <?php $i = 0;
-      foreach ($data as $info) {
+      foreach ($data_cn as $info) {
         $i++ ?>
         <tr>
           <td style="text-align: center"><?= $i ?></td>
