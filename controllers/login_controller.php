@@ -48,7 +48,7 @@ class login_controller {
                 
                 if(mysqli_num_rows($user)>0){
                         
-                        $info=$this->db->getinfosinhvien1($tk);
+                        $info=$this->db->getinfosinhvien($tk);
                        
                         $_SESSION['name']=$info['hovaten'];
                         $_SESSION['msv']=$info['masinhvien'];

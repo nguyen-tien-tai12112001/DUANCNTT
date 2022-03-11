@@ -176,18 +176,6 @@ class admin
         return $data;
     }
 
-    public function getinfosinhvien1($tk)
-    {
-        $sql = "select * from sinhvien where `masinhvien`='$tk' ";
-
-        $data = $this->execute($sql);
-        if ($this->dem() != 0) {
-            $data = mysqli_fetch_array($this->result);
-        } else {
-            $data = [];
-        }
-        return $data;
-    }
     public function creategiangvien($magiangvien, $hovaten, $gioitinh, $CMND, $ngaysinh, $phone, $email, $chuyennganh, $diachi, $lop)
     {
         $sql = "INSERT INTO `giangvien`(`magiangvien`, `hovaten`, `gioitinh`, `diachi`, `email`, `dienthoai`, `cmnd`, `ngaysinh`, `chuyennganh`,  `password`,`ChuNhiem`) 
