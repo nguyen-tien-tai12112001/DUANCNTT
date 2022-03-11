@@ -50,7 +50,7 @@
                     <td class="item-monhoc"><?= $info['hovaten'] ?></td>
 
                     <td class="item-monhoc">
-                      <select name="" id="">
+                      <select class="form-control" name="" id="">
                         <option><?= $info['trangthai_sv'] ?></option>
                         <option value="">Đang học</option>
                         <option value="">Đã tốt nghiệp</option>
