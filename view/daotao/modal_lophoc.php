@@ -23,15 +23,9 @@
             <td class="modal-td" width="30%">Chuyên ngành:</td>
             <td class="modal-td">
               <select id="chuyennganh_kt" name="chuyennganh_kt" class="form-control">
-<<<<<<< HEAD
               
                 <?php foreach ($data_cn as $info1) { ?>
                   <option value="<?= $info1['machuyennganh'] ?>" <?php if($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected';?>><?= $info1['tenchuyennganh'] ?></option>
-=======
-
-                <?php foreach ($data_cn as $info1) { ?>
-                  <option value="<?= $info1['machuyennganh'] ?>" <?php if ($info['chuyennganh'] == $info1['machuyennganh']) echo 'selected'; ?>><?= $info1['tenchuyennganh'] ?></option>
->>>>>>> d3627d04dfc15cae2b9e99fe15c4e60caf1afc87
                 <?php } ?>
               </select>
             </td>
